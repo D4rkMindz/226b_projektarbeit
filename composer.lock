@@ -2410,16 +2410,16 @@
         },
         {
             "name": "odan/docblock-checker",
-            "version": "0.2.1",
+            "version": "0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/odan/docblock-checker.git",
-                "reference": "ab65fabade4f7027ad9a5526398e7020dfff7eed"
+                "reference": "2df15da0e07d21c46db5c553cbe02eadea62ae21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/odan/docblock-checker/zipball/ab65fabade4f7027ad9a5526398e7020dfff7eed",
-                "reference": "ab65fabade4f7027ad9a5526398e7020dfff7eed",
+                "url": "https://api.github.com/repos/odan/docblock-checker/zipball/2df15da0e07d21c46db5c553cbe02eadea62ae21",
+                "reference": "2df15da0e07d21c46db5c553cbe02eadea62ae21",
                 "shasum": ""
             },
             "require": {
@@ -2463,7 +2463,7 @@
                 "psr5",
                 "testing"
             ],
-            "time": "2018-03-28T09:42:19+00:00"
+            "time": "2018-03-29T10:23:07+00:00"
         },
         {
             "name": "odan/phinx-migrations-generator",

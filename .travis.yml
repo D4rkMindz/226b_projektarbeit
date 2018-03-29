@@ -29,7 +29,6 @@ before_script:
 script:
   - ant phpunit-coverage
   - ant phpstan
-  - ant phplints
   - ant check-docblocks
 
 after_success:
