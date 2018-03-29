@@ -18,6 +18,7 @@ abstract class AbstractModel implements ModelInterface
     /**
      * AppTable constructor.
      *
+     * @todo rename model to table
      * @param Connection $connection
      */
     public function __construct(Connection $connection = null)

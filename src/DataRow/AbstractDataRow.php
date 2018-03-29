@@ -13,6 +13,7 @@ abstract class AbstractDataRow implements DataRowInterface
     /**
      * BaseEntity constructor.
      *
+     * @todo rename datarow to entity
      * @param array $row .
      */
     public function __construct(array $row = null)
