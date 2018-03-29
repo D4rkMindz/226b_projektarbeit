@@ -15,11 +15,6 @@ class ErrorControllerTest extends ApiTestCase
 {
     /**
      * Test notFoundAction
-     *
-     * @covers ::notFoundAction
-     * @throws Exception
-     * @throws MethodNotAllowedException
-     * @throws NotFoundException
      */
     public function testNotFoundAction()
     {

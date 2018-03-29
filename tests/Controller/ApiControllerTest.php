@@ -2,7 +2,6 @@
 
 namespace App\Test\Controller;
 
-use App\Controller\AppController;
 use App\Test\ApiTestCase;
 
 /**
@@ -14,8 +13,6 @@ class ApiControllerTest extends ApiTestCase
     /**
      * Test JSON action
      *
-     * @covers ::indexAction
-     * @covers AppController::json
      * @return void
      */
     public function testIndexAction()
@@ -30,8 +27,6 @@ class ApiControllerTest extends ApiTestCase
     /**
      * Test redirect action
      *
-     * @covers ::redirectToHomeAction
-     * @covers AppController::redirect
      * @return void
      */
     public function testRedirectToHomeAction()

@@ -9,8 +9,6 @@ class ServicesTestCase extends BaseTestCase
 {
     /**
      * Function is_email
-     *
-     * @covers ::is_email
      */
     public function testIsEmail()
     {

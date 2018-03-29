@@ -19,9 +19,6 @@ class IndexControllerTest extends ApiTestCase
 {
     /**
      * Test page found
-     *
-     * @covers ::indexAction
-     * @covers AppController::render
      */
     public function testPageNotFound()
     {
@@ -34,9 +31,6 @@ class IndexControllerTest extends ApiTestCase
 
     /**
      * Test home page with language
-     *
-     * @covers ::indexAction
-     * @covers AppController::render
      */
     public function testGetWithLang()
     {

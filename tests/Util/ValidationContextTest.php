@@ -16,8 +16,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test instance
      *
-     * @covers ::__construct
-     * @covers ::getMessage
      * @return void
      */
     public function testInstance()
@@ -30,7 +28,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test set message method.
      *
-     * @covers ::setMessage
      * @return void
      */
     public function testSetMessage()
@@ -46,8 +43,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test set error method
      *
-     * @covers ::setError
-     * @covers ::getErrors
      * @return void
      */
     public function testError()
@@ -71,8 +66,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test to array method
      *
-     * @covers ::toArray
-     * @covers ::setError
      * @return void
      */
     public function testToArray()
@@ -99,7 +92,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test fails method
      *
-     * @covers ::fails
      * @return void
      */
     public function testFails()
@@ -113,7 +105,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test if success is correct
      *
-     * @covers ::success
      * @return void
      */
     public function testSuccess()
@@ -127,7 +118,6 @@ class ValidationContextTest extends BaseTestCase
     /**
      * Test clear
      *
-     * @covers ::clear
      * @return void
      */
     public function testClear()
