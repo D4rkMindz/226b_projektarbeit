@@ -1,0 +1,96 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2018-03-29 13:24+0200\n"
+"PO-Revision-Date: 2018-03-29 13:25+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_GB\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ../../tmp/cache/twig\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 05/051e07621e82a092b8b68bcbbfa4ae5edb5a5142f5c71f1e109654341d2fe504.php:71
+#: 4a/4a9dd1598e997ab767fe811be062de187525cab368a8fabe2d076a747e54b851.php:75
+msgid "Home"
+msgstr "Home"
+
+#: 05/051e07621e82a092b8b68bcbbfa4ae5edb5a5142f5c71f1e109654341d2fe504.php:83
+#: 4a/4a9dd1598e997ab767fe811be062de187525cab368a8fabe2d076a747e54b851.php:87
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:45
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:80
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:49
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:84
+msgid "Login"
+msgstr "Login"
+
+#: 05/051e07621e82a092b8b68bcbbfa4ae5edb5a5142f5c71f1e109654341d2fe504.php:91
+#: 4a/4a9dd1598e997ab767fe811be062de187525cab368a8fabe2d076a747e54b851.php:95
+#: 98/9898669dd24ea9d346aa632e21bab9e5bc47650a07994705ec8ed8263aac527a.php:43
+#: e6/e612bead6031520b6a6812b72c8aea23730d8896bcf39060709623ae2efc988f.php:43
+msgid "Users"
+msgstr "Users"
+
+#: 05/051e07621e82a092b8b68bcbbfa4ae5edb5a5142f5c71f1e109654341d2fe504.php:99
+#: 4a/4a9dd1598e997ab767fe811be062de187525cab368a8fabe2d076a747e54b851.php:103
+msgid "Mail"
+msgstr "Mail"
+
+#: 05/05f9c64fef784c25e6dbddc8e82fd3edb8ebd40ca5de7d6a7d569e18881b0e90.php:43
+#: 1a/1a0160e503daf4e73ae98367f886c74e8d512d2bd019ef638d843f45a9f89497.php:43
+msgid "Hello"
+msgstr "Hello"
+
+#: 2a/2a66f2c24bde074ddb9ca718b1bcf94cee0e696c0efb138c961f23780372353a.php:32
+#: ba/baf6c5131ab41ac6b92454281562709841df662a1f72e5d8a11e2abe07f3bc38.php:32
+#: d3/d31322582e972bd445f8f0be89756d2e7ff40f0f11b50e946c4db9682f14de37.php:36
+msgid "404 - Page not Found"
+msgstr "404 - Page not Found"
+
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:51
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:55
+msgid "Email address or username"
+msgstr "Email address or username"
+
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:56
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:60
+msgid "Enter email or username"
+msgstr "Enter email or username"
+
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:63
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:68
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:67
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:72
+msgid "Password"
+msgstr "Password"
+
+#: 96/966bf3ce52e98d170e703afcdfa2b3eefac0c7ac970a8bc672da7e5430e8380f.php:75
+#: e8/e825d1bbff880020a22dcc6639ae5619269a1bcf0c49396e69a63e865166e3d2.php:79
+msgid "Stay logged in"
+msgstr "Stay logged in"
+
+#: 98/9898669dd24ea9d346aa632e21bab9e5bc47650a07994705ec8ed8263aac527a.php:47
+#: e6/e612bead6031520b6a6812b72c8aea23730d8896bcf39060709623ae2efc988f.php:47
+#, php-format
+msgid "Counter: %s"
+msgstr "Counter: %s"
+
+#: 98/9898669dd24ea9d346aa632e21bab9e5bc47650a07994705ec8ed8263aac527a.php:54
+#: e6/e612bead6031520b6a6812b72c8aea23730d8896bcf39060709623ae2efc988f.php:54
+msgid "Firstname"
+msgstr "First name"
+
+#: 98/9898669dd24ea9d346aa632e21bab9e5bc47650a07994705ec8ed8263aac527a.php:58
+#: e6/e612bead6031520b6a6812b72c8aea23730d8896bcf39060709623ae2efc988f.php:58
+msgid "Lastname"
+msgstr "Last name"
+
+#: 98/9898669dd24ea9d346aa632e21bab9e5bc47650a07994705ec8ed8263aac527a.php:62
+#: e6/e612bead6031520b6a6812b72c8aea23730d8896bcf39060709623ae2efc988f.php:62
+msgid "Username"
+msgstr "Username"

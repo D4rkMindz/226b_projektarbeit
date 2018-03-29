@@ -1,0 +1,43 @@
+{
+  "require": {
+    "aura/session": "^2.1",
+    "slim/slim": "^3.9",
+    "cakephp/database": "^3.5",
+    "mailgun/mailgun-php": "^2.3",
+    "monolog/monolog": "^1.23",
+    "slim/twig-view": "^2.3",
+    "odan/twig-translation": "^0.2.2",
+    "odan/twig-assets": "^0.2.2",
+    "symfony/translation": "^3.4",
+    "php-http/curl-client": "^1.7",
+    "zendframework/zend-hydrator": "^2.3",
+    "zendframework/zend-filter": "^2.7",
+    "zendframework/zend-servicemanager": "^3.3"
+  },
+  "require-dev": {
+    "robmorgan/phinx": "^0.9.1",
+    "odan/phinx-migrations-generator": "^2.3",
+    "phpunit/phpunit": "^6.4",
+    "phpunit/dbunit": "^3.0",
+    "odan/docblock-checker": "^0.2.0"
+  },
+  "autoload": {
+    "files": [
+      "lib/services.php",
+      "lib/util.php"
+    ],
+    "psr-4": {
+      "App\\": "src"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+    "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit -n --no-patch 1 src tests"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Test\\": "tests"
+    }
+  }
+}

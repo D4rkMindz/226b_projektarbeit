@@ -1,0 +1,11 @@
+{% extends "layout.twig" %}
+
+{# Assets #}
+{% block assets %}
+    {{ assets({files: ['Home/style.css']}) }}
+{% endblock %}
+
+{# Content #}
+{% block content %}
+    <h1>{{ __('Hello World') }}</h1>
+{% endblock %}
