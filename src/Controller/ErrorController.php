@@ -7,15 +7,16 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * Class ErrorController
+ * Class ErrorController.
  */
 class ErrorController extends AppController
 {
     /**
-     * Not found action
+     * Not found action.
      *
      * @param Request $request
      * @param Response $response
+     *
      * @return ResponseInterface
      */
     public function notFoundAction(Request $request, Response $response): ResponseInterface

@@ -7,7 +7,7 @@ use Cake\Database\Query;
 use Cake\Database\StatementInterface;
 
 /**
- * Class AbstractModel
+ * Class AbstractModel.
  */
 abstract class AbstractModel implements ModelInterface
 {
@@ -19,6 +19,7 @@ abstract class AbstractModel implements ModelInterface
      * AppTable constructor.
      *
      * @todo rename model to table
+     *
      * @param Connection $connection
      */
     public function __construct(Connection $connection = null)
@@ -54,6 +55,7 @@ abstract class AbstractModel implements ModelInterface
      * Insert into database.
      *
      * @param array $row with data to insertUser into database
+     *
      * @return StatementInterface
      */
     protected function insert(array $row): StatementInterface
@@ -62,10 +64,11 @@ abstract class AbstractModel implements ModelInterface
     }
 
     /**
-     * Update database
+     * Update database.
      *
      * @param string $where should be the id
      * @param array $row
+     *
      * @return StatementInterface
      */
     protected function update(array $row, string $where): StatementInterface
@@ -74,12 +77,15 @@ abstract class AbstractModel implements ModelInterface
         $query->update($this->table)
             ->set($row)
             ->where(['id' => $where]);
+
         return $query->execute();
     }
+
     /**
      * Delete from database.
      *
      * @param string $id
+     *
      * @return StatementInterface
      */
     protected function delete(string $id): StatementInterface

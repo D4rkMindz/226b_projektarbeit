@@ -6,7 +6,7 @@ use Zend\Hydrator\NamingStrategy\UnderscoreNamingStrategy;
 use Zend\Hydrator\ObjectProperty as Hydrator;
 
 /**
- * Class AbstractDataRow
+ * Class AbstractDataRow.
  */
 abstract class AbstractDataRow implements DataRowInterface
 {
@@ -14,7 +14,8 @@ abstract class AbstractDataRow implements DataRowInterface
      * BaseEntity constructor.
      *
      * @todo rename datarow to entity
-     * @param array $row .
+     *
+     * @param array $row 
      */
     public function __construct(array $row = null)
     {
@@ -47,7 +48,7 @@ abstract class AbstractDataRow implements DataRowInterface
     }
 
     /**
-     * To json
+     * To json.
      *
      * @return string Json
      */

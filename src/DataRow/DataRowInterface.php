@@ -3,7 +3,7 @@
 namespace App\DataRow;
 
 /**
- * Interface DataRowInterface
+ * Interface DataRowInterface.
  */
 interface DataRowInterface
 {

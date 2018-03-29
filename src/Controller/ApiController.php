@@ -9,7 +9,7 @@ use Slim\Http\Response;
 use Slim\Router;
 
 /**
- * Class ApiController
+ * Class ApiController.
  */
 class ApiController extends AppController
 {
@@ -30,15 +30,16 @@ class ApiController extends AppController
     }
 
     /**
-     * Index action
+     * Index action.
      *
      * @param Request $request
      * @param Response $response
+     *
      * @return ResponseInterface
      */
     public function indexAction(Request $request, Response $response): ResponseInterface
     {
-        return $this->json($response, ['message'=> 'Hello World']);
+        return $this->json($response, ['message' => 'Hello World']);
     }
 
     /**
@@ -46,6 +47,7 @@ class ApiController extends AppController
      *
      * @param Request $request
      * @param Response $response
+     *
      * @return ResponseInterface
      */
     public function redirectToHomeAction(Request $request, Response $response): ResponseInterface

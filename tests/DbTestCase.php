@@ -15,7 +15,7 @@ use Psr\Container\NotFoundExceptionInterface;
 use Slim\Container;
 
 /**
- * Class DbTestCase
+ * Class DbTestCase.
  */
 abstract class DbTestCase extends ApiTestCase
 {
@@ -37,9 +37,10 @@ abstract class DbTestCase extends ApiTestCase
     /**
      * Get PDO object.
      *
-     * @return PDO
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
+     *
+     * @return PDO
      */
     protected function getPdo(): PDO
     {
@@ -68,7 +69,7 @@ abstract class DbTestCase extends ApiTestCase
         // Check if phinxlog table exists in database.
         $tableSchema = $this->container->get('settings')->get('db')['database'];
         $pdo = $this->getPdo();
-        $stmt = $pdo->prepare("SELECT 1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = :tableschema AND TABLE_NAME = :phinxlog");
+        $stmt = $pdo->prepare('SELECT 1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = :tableschema AND TABLE_NAME = :phinxlog');
         $stmt->execute(['tableschema' => $tableSchema, 'phinxlog' => 'phinxlog']);
 
         $shouldMigrate = true;
@@ -97,13 +98,15 @@ abstract class DbTestCase extends ApiTestCase
      * Check if there is any pending migration.
      *
      * @param PDO $pdo
-     * @return bool
+     *
      * @throws \Interop\Container\Exception\ContainerException
+     *
+     * @return bool
      */
     private function hasPendingMigrations(PDO $pdo): bool
     {
         // Check if there is any pending migration
-        $stmt = $pdo->prepare("SELECT version FROM phinxlog ORDER BY version ASC");
+        $stmt = $pdo->prepare('SELECT version FROM phinxlog ORDER BY version ASC');
         $stmt->execute();
         $phinxlogRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if (empty($phinxlogRows)) {
@@ -127,7 +130,7 @@ abstract class DbTestCase extends ApiTestCase
             $version = substr($filename, 0, strpos($filename, '_'));
             if (!isset($migratedVersions[$version])) {
                 return true;
-            };
+            }
         }
 
         return false;
@@ -156,9 +159,10 @@ abstract class DbTestCase extends ApiTestCase
     /**
      * Get Connection.
      *
-     * @return DefaultConnection
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
+     *
+     * @return DefaultConnection
      */
     public function getConnection(): DefaultConnection
     {
@@ -173,6 +177,7 @@ abstract class DbTestCase extends ApiTestCase
      * Generate Update row.
      *
      * @param array $row
+     *
      * @return array
      */
     public function generateUpdateRow(array $row): array
@@ -181,7 +186,7 @@ abstract class DbTestCase extends ApiTestCase
             if (preg_match('/\w*(id)\w*/', $key)) {
                 continue;
             }
-            $converted = preg_replace('/[ÄÖÜäöüÉÈÀéèà]/', "", $row[$key]);
+            $converted = preg_replace('/[ÄÖÜäöüÉÈÀéèà]/', '', $row[$key]);
             $parts = str_split(html_entity_decode($converted));
             sort($parts);
             $row[$key] = implode($parts);

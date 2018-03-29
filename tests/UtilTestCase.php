@@ -7,7 +7,7 @@ use Symfony\Component\Translation\MessageSelector;
 use Symfony\Component\Translation\Translator;
 
 /**
- * Class UtilTestCase
+ * Class UtilTestCase.
  */
 class UtilTestCase extends BaseTestCase
 {
@@ -15,9 +15,11 @@ class UtilTestCase extends BaseTestCase
      * Test translation method.
      *
      * @dataProvider messageDataProvider
+     *
      * @param string $locale
      * @param string $message
      * @param string $expected
+     *
      * @return void
      */
     public function testTranslateMethod(string $locale, string $message, string $expected)
@@ -30,10 +32,12 @@ class UtilTestCase extends BaseTestCase
      * Test translation method with context.
      *
      * @dataProvider messageWithContextDataProvider
+     *
      * @param string $locale
      * @param string $message
      * @param string $context
      * @param string $expected
+     *
      * @return void
      */
     public function testTranslateMethodWithContext(string $locale, string $message, string $context, string $expected)
@@ -43,7 +47,7 @@ class UtilTestCase extends BaseTestCase
     }
 
     /**
-     * Data Provider for translation test
+     * Data Provider for translation test.
      *
      * @return array
      */
@@ -87,17 +91,16 @@ class UtilTestCase extends BaseTestCase
     }
 
     /**
-     *
-     *
      * @param string $locale
+     *
      * @return void
      */
     protected function prepareTranslator(string $locale): void
     {
-        $translator = new Translator($locale, /** @scrutinizer ignore-type */
+        $translator = new Translator($locale, /* @scrutinizer ignore-type */
             new MessageSelector());
         $translator->addLoader('mo', new MoFileLoader());
-        $resource = __DIR__ . "/../resources/locale/" . $locale . "_messages.mo";
+        $resource = __DIR__ . '/../resources/locale/' . $locale . '_messages.mo';
         $translator->setLocale($locale);
         $translator->addResource('mo', $resource, $locale);
 

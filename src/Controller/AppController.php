@@ -14,7 +14,7 @@ use Slim\Router;
 use Slim\Views\Twig;
 
 /**
- * Class AppController
+ * Class AppController.
  */
 class AppController
 {
@@ -57,6 +57,7 @@ class AppController
      * AppController constructor.
      *
      * @param Container $container
+     *
      * @throws ContainerException
      */
     public function __construct(Container $container)
@@ -71,12 +72,13 @@ class AppController
     }
 
     /**
-     * Render HTML
+     * Render HTML.
      *
      * @param Response $response
      * @param Request $request
      * @param string $file
      * @param array $viewData
+     *
      * @return ResponseInterface
      */
     protected function render(
@@ -101,6 +103,7 @@ class AppController
      * @param Response $response
      * @param array $data
      * @param int $status
+     *
      * @return ResponseInterface
      */
     protected function json(Response $response, $data, int $status = 200): ResponseInterface
@@ -114,6 +117,7 @@ class AppController
      * @param Response $response
      * @param string $url
      * @param int $status
+     *
      * @return ResponseInterface
      */
     public function redirect(Response $response, string $url, int $status = 301): ResponseInterface

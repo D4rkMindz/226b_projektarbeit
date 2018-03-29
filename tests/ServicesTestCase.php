@@ -3,12 +3,12 @@
 namespace App\Test;
 
 /**
- * util
+ * util.
  */
 class ServicesTestCase extends BaseTestCase
 {
     /**
-     * Function is_email
+     * Function is_email.
      */
     public function testIsEmail()
     {

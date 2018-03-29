@@ -6,15 +6,15 @@ use App\Test\BaseTestCase;
 use App\Util\ValidationContext;
 
 /**
- * AppControllerTestCase
+ * AppControllerTestCase.
  *
- * @coversDefaultClass App\Util\ValidationContext
+ * @coversDefaultClass \App\Util\ValidationContext
  * @group actual
  */
 class ValidationContextTest extends BaseTestCase
 {
     /**
-     * Test instance
+     * Test instance.
      *
      * @return void
      */
@@ -41,7 +41,7 @@ class ValidationContextTest extends BaseTestCase
     }
 
     /**
-     * Test set error method
+     * Test set error method.
      *
      * @return void
      */
@@ -64,7 +64,7 @@ class ValidationContextTest extends BaseTestCase
     }
 
     /**
-     * Test to array method
+     * Test to array method.
      *
      * @return void
      */
@@ -74,8 +74,8 @@ class ValidationContextTest extends BaseTestCase
         $validationContext->setError('username', 'Username not valid');
         $validationContext->setError('password', 'Password not valid');
         $expected = [
-            "message" => 'Please check your data',
-            "errors" => [
+            'message' => 'Please check your data',
+            'errors' => [
                 [
                     'field' => 'username',
                     'message' => 'Username not valid',
@@ -90,7 +90,7 @@ class ValidationContextTest extends BaseTestCase
     }
 
     /**
-     * Test fails method
+     * Test fails method.
      *
      * @return void
      */
@@ -103,7 +103,7 @@ class ValidationContextTest extends BaseTestCase
     }
 
     /**
-     * Test if success is correct
+     * Test if success is correct.
      *
      * @return void
      */
@@ -116,7 +116,7 @@ class ValidationContextTest extends BaseTestCase
     }
 
     /**
-     * Test clear
+     * Test clear.
      *
      * @return void
      */

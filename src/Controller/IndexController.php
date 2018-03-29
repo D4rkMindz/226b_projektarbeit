@@ -8,7 +8,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * Class IndexController
+ * Class IndexController.
  */
 class IndexController extends AppController
 {
@@ -16,6 +16,7 @@ class IndexController extends AppController
      * IndexController constructor.
      *
      * @param Container $container
+     *
      * @throws \Interop\Container\Exception\ContainerException
      */
     public function __construct(Container $container)
@@ -28,9 +29,11 @@ class IndexController extends AppController
      *
      * @param Request $request
      * @param Response $response
-     * @return ResponseInterface
+     *
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
+     *
+     * @return ResponseInterface
      */
     public function indexAction(Request $request, Response $response): ResponseInterface
     {

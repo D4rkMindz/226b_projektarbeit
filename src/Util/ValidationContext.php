@@ -1,13 +1,15 @@
 <?php
+
 namespace App\Util;
 
 /**
- * Class ValidationContext
+ * Class ValidationContext.
  */
 class ValidationContext
 {
     protected $message;
     protected $errors = [];
+
     /**
      * ValidationContext constructor.
      *
@@ -17,6 +19,7 @@ class ValidationContext
     {
         $this->message = $message === 'Please check your data' ? 'Please check your data' : $message;
     }
+
     /**
      * Get message.
      *
@@ -26,6 +29,7 @@ class ValidationContext
     {
         return $this->message;
     }
+
     /**
      * Set message.
      *
@@ -35,8 +39,9 @@ class ValidationContext
     {
         $this->message = $message;
     }
+
     /**
-     * Set error
+     * Set error.
      *
      * @param string $field
      * @param string $message
@@ -45,10 +50,11 @@ class ValidationContext
     public function setError(string $field, string $message)
     {
         $this->errors[] = [
-            "field" => $field,
-            "message" => $message,
+            'field' => $field,
+            'message' => $message,
         ];
     }
+
     /**
      * Get errors.
      *
@@ -58,6 +64,7 @@ class ValidationContext
     {
         return $this->errors;
     }
+
     /**
      * Fail.
      *
@@ -69,8 +76,9 @@ class ValidationContext
     {
         return !empty($this->errors);
     }
+
     /**
-     * Success
+     * Success.
      *
      * Check if there are not any errors.
      *
@@ -80,6 +88,7 @@ class ValidationContext
     {
         return empty($this->errors);
     }
+
     /**
      * Clear.
      *
@@ -90,6 +99,7 @@ class ValidationContext
         $this->message = null;
         $this->errors = [];
     }
+
     /**
      * Validation To Array.
      *
@@ -100,9 +110,10 @@ class ValidationContext
     public function toArray()
     {
         $result = [
-            "message" => $this->message,
-            "errors" => $this->errors,
+            'message' => $this->message,
+            'errors' => $this->errors,
         ];
+
         return $result;
     }
 }

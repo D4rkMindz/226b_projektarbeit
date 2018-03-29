@@ -4,7 +4,6 @@ namespace App\Test;
 
 use Aura\Session\Session;
 use Exception;
-use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use ReflectionClass;
@@ -22,7 +21,7 @@ use Slim\Http\UploadedFile;
 use Slim\Http\Uri;
 
 /**
- * Class ApiTestCase
+ * Class ApiTestCase.
  */
 abstract class ApiTestCase extends BaseTestCase
 {
@@ -42,14 +41,14 @@ abstract class ApiTestCase extends BaseTestCase
         $this->app = require __DIR__ . '/../config/bootstrap.php';
 
         /**
-         * @var Session $session
+         * @var Session
          */
         $session = $this->app->getContainer()->get(Session::class);
         $session->clear();
     }
 
     /**
-     * Tear down method
+     * Tear down method.
      *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -57,7 +56,7 @@ abstract class ApiTestCase extends BaseTestCase
     protected function tearDown()
     {
         /**
-         * @var Session $session
+         * @var Session
          */
         $session = $this->app->getContainer()->get(Session::class);
         $session->destroy();
@@ -69,6 +68,7 @@ abstract class ApiTestCase extends BaseTestCase
      *
      * @param string $method
      * @param string $url
+     *
      * @return Request
      */
     protected function createRequest(string $method, string $url): Request
@@ -90,10 +90,12 @@ abstract class ApiTestCase extends BaseTestCase
      * Make silent request.
      *
      * @param Request $request
-     * @return Response
+     *
      * @throws Exception
      * @throws MethodNotAllowedException
      * @throws NotFoundException
+     *
+     * @return Response
      */
     protected function request(Request $request): Response
     {
@@ -111,6 +113,7 @@ abstract class ApiTestCase extends BaseTestCase
      * @param Container $container
      * @param string $key
      * @param mixed $value
+     *
      * @throws ReflectionException
      */
     protected function setContainer(Container $container, string $key, $value)
@@ -141,6 +144,7 @@ abstract class ApiTestCase extends BaseTestCase
      *
      * @param Request $request
      * @param array $data
+     *
      * @return Request
      */
     protected function withFormData(Request $request, array $data): Request
@@ -158,10 +162,11 @@ abstract class ApiTestCase extends BaseTestCase
     }
 
     /**
-     * Add JSON body to request
+     * Add JSON body to request.
      *
      * @param Request $request
      * @param array $data
+     *
      * @return Request
      */
     protected function withJson(Request $request, array $data): Request

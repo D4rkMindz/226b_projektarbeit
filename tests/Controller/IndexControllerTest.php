@@ -3,22 +3,22 @@
  * Created by PhpStorm.
  * User: marc.wilhelm
  * Date: 18.01.2018
- * Time: 14:25
+ * Time: 14:25.
  */
 
 namespace App\Test\Controller;
 
-use App\Controller\AppController;
 use App\Test\ApiTestCase;
 
 /**
- * Class IndexControllerTest
- * @coversDefaultClass App\Controller\IndexController
+ * Class IndexControllerTest.
+ *
+ * @coversDefaultClass \App\Controller\IndexController
  */
 class IndexControllerTest extends ApiTestCase
 {
     /**
-     * Test page found
+     * Test page found.
      */
     public function testPageNotFound()
     {
@@ -30,7 +30,7 @@ class IndexControllerTest extends ApiTestCase
     }
 
     /**
-     * Test home page with language
+     * Test home page with language.
      */
     public function testGetWithLang()
     {
