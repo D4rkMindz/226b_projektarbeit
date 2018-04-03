@@ -10,6 +10,7 @@ enabled:
   - phpdoc_no_package
   - phpdoc_scalar
   - phpdoc_types
+  - phpdoc_no_empty_return
 
 disabled:
   - phpdoc_no_empty_return
