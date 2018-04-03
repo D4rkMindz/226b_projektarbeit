@@ -45,7 +45,6 @@ class ValidationContext
      *
      * @param string $field
      * @param string $message
-     * @param int $status
      */
     public function setError(string $field, string $message)
     {
