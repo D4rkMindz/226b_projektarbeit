@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Model;
+namespace App\Table;
 
 use Cake\Database\Connection;
 use Cake\Database\Query;
 use Cake\Database\StatementInterface;
 
 /**
- * Class AbstractModel.
+ * Class AbstractTable.
  */
-abstract class AbstractModel implements ModelInterface
+abstract class AbstractTable implements ModelInterface
 {
     protected $table = null;
 

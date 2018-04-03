@@ -6,7 +6,7 @@
  * Time: 09:31.
  */
 
-namespace App\Model;
+namespace App\Table;
 
 /**
  * Interface ModelInterface.

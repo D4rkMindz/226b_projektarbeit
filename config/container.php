@@ -1,9 +1,6 @@
 <?php
 
-use App\Model\UserModel;
-use App\Service\Login\LoginService;
-use App\Service\Mail\MailerInterface;
-use App\Service\Mail\MailgunAdapter;
+use App\Table\UserModel;
 use Aura\Session\Session;
 use Aura\Session\SessionFactory;
 use Cake\Database\Connection;
