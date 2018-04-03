@@ -11,6 +11,9 @@ enabled:
   - phpdoc_scalar
   - phpdoc_types
 
+disabled:
+  - phpdoc_no_empty_return
+
 linting: true
 
 finder:
