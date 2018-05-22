@@ -1,7 +1,7 @@
 <?php
-$language = '{language:(?:de|en)}';
+$language = '{language:(?:de|en)}'; // opt. later
 
-$app->get('/[' . $language . ']', 'App\Controller\IndexController:indexAction')->setName('root');
-$app->get('/' . $language . '/errorpage', 'App\Controller\ErrorController:notFoundAction')->setName('notFound');
-$app->get('/api', 'App\Controller\ApiController:indexAction')->setName('api');
-$app->get('/api/home', 'App\Controller\ApiController:redirectToHomeAction')->setName('api.to-home');
+$app->get('/', 'App\Controller\IndexController:indexAction')->setName('root');
+$app->get('/errorpage', 'App\Controller\ErrorController:notFoundAction')->setName('notFound');
+$app->get('/game', 'App\Controller\GameController:indexAction')->setName('game');
+$app->get('/game/{game_id}', 'App\Controller\GameController:indexAction')->setName('game.join');

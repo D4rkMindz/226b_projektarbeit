@@ -1,0 +1,38 @@
+{% extends 'layout.twig' %}
+
+{% block assets %}
+    {{ assets({files: ['Game/js/game.js','Game/js/run.js']}) }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"
+            type="application/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="modal fade" id="username" tabindex="-1" role="dialog" aria-labelledby="usernameModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="username">Username</h5>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <p>Please choose a username for the game</p>
+                            <label for="username" class="col-form-label">Username</label>
+                            <input type="text" class="form-control" id="username" data-id="username">
+                            <span class="form-text" style="color: red;" id="username-error"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-id="accept-username">OK</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 data-id="display-username"></h1>
+        <button type="button" class="btn btn-primary" data-id="emit-test">TEST</button>
+    </div>
+    <input type="hidden" value="{{ gameId }}" data-id="game-id">
+{% endblock %}
