@@ -173,6 +173,17 @@ abstract class AbstractSocket implements MessageComponentInterface
     }
 
     /**
+     * Emit start.
+     *
+     * @param string $roomId
+     */
+    protected function emitStart(string $roomId)
+    {
+        $room = $this->getRoom($roomId);
+        $room->emitStart();
+    }
+
+    /**
      * Send information for invalid socket event
      *
      * @param ConnectionInterface $connection

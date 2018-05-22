@@ -126,8 +126,11 @@ class Room
     public function emitStart()
     {
         $this->started = true;
+        reset($this->clients);
+        $key = key($this->clients);
         $package = [
             'type' => AbstractSocket::ACTION_START,
+            'beginner' => $this->clients[$key]->getUsername(),
         ];
         $this->sendDataToClients($package);
     }
