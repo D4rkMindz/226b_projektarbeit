@@ -1,21 +1,14 @@
-# Gracili
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/D4rkMindz/gracili/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/D4rkMindz/gracili/?branch=master)
-[![Build Status](https://travis-ci.org/D4rkMindz/gracili.svg?branch=master)](https://travis-ci.org/D4rkMindz/gracili)
-[![StyleCI](https://styleci.io/repos/127299959/shield?branch=master)](https://styleci.io/repos/127299959)
-[![Code Coverage](https://scrutinizer-ci.com/g/D4rkMindz/gracili/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/D4rkMindz/gracili/?branch=master)
+# 226B Projektarbeit
 
 ----
 
-## What is Gracili?
+## What is this project?
 
-Gracili is a PHP Application Template to quickly create a new Project.
-Using this template can save you a lot of time. With the [Slim PHP](https://www.slimframework.com/) Framework is a fast and simple base provided to easily extend your application to grow with the required workload.
+This is a Projekt for our school. This battleship web game is coded in PHP and JavaScript mainly. We also use the PHP SLIM Framework since this is the one we prefere. Also used is Twig.
 
 ## Installation
 
-Download the [latest version](https://github.com/D4rkMindz/gracili/releases) of Gracili and extract it to the [XAMPP](https://www.apachefriends.org/index.html) htdocs-folder.
-You need to run the [composer](https://getcomposer.org) installation command once after the extraction to install all required libraries
+Fork or Download the latest Release from GitHub to your locale machine, open the command line in the document root and run the composer installation command.
 
 ```bash
 $ composer install
@@ -26,14 +19,14 @@ You have to rename the `config/env.example.php` file to `config/env.php` and  fi
 If the `config/env.php` file is not found, the application will look for it in the parent directory (most probably the htdocs folder in your xampp environment). If the `env.php` file is not found there, the application will throw an Error.
 You can also define a `APP_ENV` environment variable and add a `<APP_ENV>.php` file in the `config/` folder to specify public configurations for e.g. your [CI Service](https://en.wikipedia.org/wiki/Continuous_integration) (NOT PASSWORD OR ANY SECRETS)
 
-Gracili is now successfully installed and ready to work on.
+Make shure to NEVER deploy secret data like passwords to GitHub or any other versioning tool.
 
 Afterwards you can start your local Apache Server with [XAMPP](https://www.apachefriends.org/index.html).
 To visit your Website you have to open http://localhost/<project_directory>/.
 
 ## Structure
 
-The Gracili Application Template is build on the [MVC Design Pattern](https://de.wikipedia.org/wiki/Model_View_Controller). All source code should be in the `src/` directory.
+The Application is build on the [MVC Design Pattern](https://de.wikipedia.org/wiki/Model_View_Controller). All source code should be in the `src/` directory.
 
 | Folder            | Content                                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,8 +43,6 @@ The Gracili Application Template is build on the [MVC Design Pattern](https://de
 | `tests/`          | Directory for tests                                                                                                                    |
 | `temp/`           | Temporary files (logfiles, cache)                                                                                                      |
 
-Afterwards you can start your local Apache Server with [XAMPP](https://www.apachefriends.org/index.html).
-To visit your Website you have to open http://localhost/<project_directory>/.
 
 ## Running the tests
 
