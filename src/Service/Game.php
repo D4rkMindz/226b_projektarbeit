@@ -10,6 +10,8 @@ use SplObjectStorage;
 
 class Game extends AbstractSocket
 {
+    const FIELD_SIZE = 13;
+
     /**
      * @var SplObjectStorage
      */
@@ -24,7 +26,7 @@ class Game extends AbstractSocket
         parent::__construct();
         $this->clients = new SplObjectStorage();
     }
-    
+
     /**
      * When a new connection is opened it will be passed to this method
      * @param  ConnectionInterface $conn The socket/connection that just connected to your application
@@ -35,7 +37,7 @@ class Game extends AbstractSocket
         echo $conn->resourceId . " joined\n";
         // TODO: Implement onOpen() method.
     }
-    
+
     /**
      * This is called before or after a socket is closed (depends on how it's closed).  SendMessage to $conn will not result in an error if it has already been closed.
      * @param  ConnectionInterface $conn The socket/connection that is closing/closed
@@ -95,7 +97,8 @@ class Game extends AbstractSocket
                 $this->emitShot($roomId, $connection->resourceId, $data['x'], $data['y']);
                 break;
             case self::ACTION_HOST:
-                $this->addClientAsHost($connection, $data['username']);
+                $roomId = $this->addClientAsHost($connection, $data['username']);
+                $this->emitHost($roomId, $connection->resourceId, $roomId);
                 break;
             case self::ACTION_JOIN:
                 $this->addClientToRoom($connection, $data['room_id'], $data['username']);

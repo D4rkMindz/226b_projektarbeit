@@ -5,6 +5,7 @@ const ACTIONS = {
     READY: 'ready',
     START: 'start',
     SHOT: 'shot',
+    ERROR: 'error',
 };
 
 class Game {
@@ -13,6 +14,7 @@ class Game {
         this.socket = socket;
         this.username = username;
         this.registerSockets();
+        this.registerClick();
         console.log(`User joined the game as ${username}`);
     }
 
@@ -28,6 +30,15 @@ class Game {
         this.send(data, type);
     }
 
+    registerClick() {
+        $('[data-field]').on('click', function (event) {
+            event.preventDefault();
+            const row = $(this).data('row');
+            const column = $(this).data('column');
+            alert(`Clicked row ${row}, column ${column}`);
+        });
+    }
+
     send(data, type) {
         data['type'] = type;
         this.socket.send(JSON.stringify(data));
@@ -39,13 +50,14 @@ class Game {
 
     onMessage(event) {
         const data = JSON.parse(event.data);
-        console.log(data);
         switch (data.type) {
             case ACTIONS.JOIN:
                 alert('someone joined');
                 console.log(data);
                 break;
             case ACTIONS.HOST:
+                const url = window.location.href + '/' + data.session_key;
+                $('[data-id=invitation-link]').append(`<a href="${url}">${url}</a>`);
                 console.log(data);
                 break;
             case ACTIONS.PLACE_SHIP:
@@ -58,6 +70,10 @@ class Game {
                 console.log(data);
                 break;
             case ACTIONS.SHOT:
+                console.log(data);
+                break;
+            case ACTIONS.ERROR:
+                alert(data.message);
                 console.log(data);
                 break;
         }

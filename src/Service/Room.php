@@ -136,6 +136,21 @@ class Room
     }
 
     /**
+     * Emit host.
+     *
+     * @param string $userId
+     * @param string $hostId
+     */
+    public function emitHost(string $userId, string $hostId)
+    {
+        $package = [
+            'type' => AbstractSocket::ACTION_HOST,
+            'session_key' => $hostId,
+        ];
+        $this->sendToEmitter($userId, $package);
+    }
+
+    /**
      * Add ship to client
      *
      * @param string $clientId
@@ -173,6 +188,26 @@ class Room
     private function sendDataToClients(array $package)
     {
         foreach ($this->clients as $client) {
+            $package['clientId'] = $client->getId();
+            $client->send(json_encode($package));
+        }
+    }
+
+    private function sendToEmitter(string $userId, array $package)
+    {
+        foreach ($this->clients as $client) {
+            if ($client->getId() == $userId) {
+                $client->send(json_encode($package));
+            }
+        }
+    }
+
+    private function broadcast(string $userId, array $package)
+    {
+        foreach ($this->clients as $client) {
+            if ($client->getId() == $userId) {
+                continue;
+            }
             $client->send(json_encode($package));
         }
     }

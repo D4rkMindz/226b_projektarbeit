@@ -99,8 +99,11 @@ class Client
      * @param int $y
      * @return bool
      */
-    public function shoot(int $x, int $y): bool
+    public function shoot(int $x, int $y): string
     {
+        if (empty($this->ships)) {
+            return Ship::STATUS_NOT_HIT;
+        }
         foreach ($this->ships as $ship) {
             if ($ship->shoot($x, $y)) {
                 if ($ship->isDown()) {

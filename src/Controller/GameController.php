@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Service\Game;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -27,6 +28,6 @@ class GameController extends AppController
         if (array_key_exists('game_id', $args)) {
             $gameId = $args['game_id'];
         }
-        return $this->render($response, $request, 'Game/game.twig', ['gameId' => $gameId]);
+        return $this->render($response, $request, 'Game/game.twig', ['gameId' => $gameId, 'fieldSize' => Game::FIELD_SIZE]);
     }
 }

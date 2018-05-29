@@ -7,7 +7,6 @@ namespace App\Service;
 use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
 use ReflectionClass;
-use SplObjectStorage;
 
 /**
  * Class AbstractSocket
@@ -87,7 +86,7 @@ abstract class AbstractSocket implements MessageComponentInterface
                 $this->emitJoin($roomId, $username);
                 return true;
             } else {
-                $this->emitError($connection, ['message' => 'Session is full']);
+                $this->emitError($connection, 'Session is full');
                 return false;
             }
         }
@@ -170,6 +169,19 @@ abstract class AbstractSocket implements MessageComponentInterface
     {
         $room = $this->getRoom($roomId);
         $room->emitJoin($username);
+    }
+
+    /**
+     * Emit host.
+     *
+     * @param string $roomId
+     * @param string $userId
+     * @param string $hostId
+     */
+    protected function emitHost(string $roomId, string $userId, string $hostId)
+    {
+        $room = $this->getRoom($roomId);
+        $room->emitHost($userId, $hostId);
     }
 
     /**
