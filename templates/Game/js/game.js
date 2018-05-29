@@ -14,7 +14,7 @@ class Game {
         this.socket = socket;
         this.username = username;
         this.registerSockets();
-        this.registerClick();
+        this.registerShot();
         console.log(`User joined the game as ${username}`);
     }
 
@@ -30,12 +30,19 @@ class Game {
         this.send(data, type);
     }
 
-    registerClick() {
+    registerShot() {
+        const $this = this;
         $('[data-field]').on('click', function (event) {
             event.preventDefault();
             const row = $(this).data('row');
             const column = $(this).data('column');
-            alert(`Clicked row ${row}, column ${column}`);
+            // alert(`Clicked row ${row}, column ${column}`);
+
+            const data = {
+                x: column,
+                y: row,
+            };
+            $this.send(data, ACTIONS.SHOT);
         });
     }
 
