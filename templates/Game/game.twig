@@ -2,6 +2,7 @@
 
 {% block assets %}
     {{ assets({files: ['Game/js/startup.js','Game/js/game.js','Game/js/run.js']}) }}
+    {{ assets({files: ['Game/style.css']}) }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"
             type="application/javascript"></script>
 {% endblock %}
@@ -40,10 +41,16 @@
     </div>
     <div class="game">
         <table class="table game-field">
+            <tr>
+                <td></td>
+
+            </tr>
             {% for row in range(1, fieldSize)%}
+
                 <tr>
+                    <td>{{ row }}</td>
                     {% for column in range(1, fieldSize) %}
-                        <td data-field data-row="{{ row }}" data-column="{{ column }}">{{ row }},{{ column }}</td>
+                        <td data-field class="ship-table" data-row="{{ row }}" data-column="{{ column }}"></td>
                     {% endfor %}
                 </tr>
             {% endfor %}
