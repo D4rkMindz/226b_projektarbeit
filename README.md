@@ -3,7 +3,7 @@
 ----
 
 ## What is this project?
-test
+
 This is a Projekt for our school. This battleship web game is coded in PHP and JavaScript mainly. We also use the PHP SLIM Framework since this is the one we prefere. Also used is Twig.
 
 ## Installation
