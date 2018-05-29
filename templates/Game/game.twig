@@ -33,28 +33,45 @@
     </div>
     <div>
         <h1 data-id="display-username"></h1>
-        {% if gameId is empty%}
+        {% if gameId is empty %}
             <p>Invite your friend to this game via the link below</p>
             <p data-id="invitation-link"></p>
         {% endif %}
         <button type="button" class="btn btn-primary" data-id="emit-test">TEST</button>
     </div>
-    <div class="game">
-        <table class="table game-field">
-            <tr>
-                <td></td>
-
-            </tr>
-            {% for row in range(1, fieldSize)%}
-
+    <div class="row">
+        <div class="game col-md-9">
+            <table class="table game-field">
                 <tr>
-                    <td>{{ row }}</td>
-                    {% for column in range(1, fieldSize) %}
-                        <td data-field class="ship-table" data-row="{{ row }}" data-column="{{ column }}"></td>
+                    {% for i in (1..14) %}
+                        <td>{{ i }}</td>
                     {% endfor %}
+
                 </tr>
-            {% endfor %}
-        </table>
+                {% for row in range(1, fieldSize) %}
+
+                    <tr>
+                        <td class="ship-table-numbre">{{ row }}</td>
+                        {% for column in range(1, fieldSize) %}
+                            <td data-field class="ship-table" data-row="{{ row }}" data-column="{{ column }}"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="info col-md-2">
+            <div class="users">
+                <span id="username"></span>
+                vs.
+                <span id="enemyUsername"></span>
+            </div>
+            <div class="ships">
+                {{ __('All ships to insert') }}
+            </div>
+        </div>
+    </div>
+    <div class="link">
+        <a href="link/{{ gameId }}">link/{{ gameId }}</a>
     </div>
     <input type="hidden" value="{{ gameId }}" data-id="game-id">
 {% endblock %}
