@@ -9,10 +9,18 @@
     height: 40px;
 }
 
-.ships {
+.ship-container {
     border: 1px solid black;
     width: 100%;
     height: 80%;
+}
+
+.ship {
+    background-color: gray;
+}
+
+p.ship {
+    margin-left: 5px;
 }
 
 .game-field > tbody > tr > td > p {

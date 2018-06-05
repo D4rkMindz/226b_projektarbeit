@@ -67,11 +67,11 @@
                 vs.
                 <span id="enemyUsername"></span>
             </div>
-            <div class="ships" ondrop="drop(event)" ondragover="allowDrop(event)" id="allShips">
+            <div class="ship-container" ondrop="drop(event)" ondragover="allowDrop(event)" id="allShips">
                 {{ __('All ships to insert') }}
                 {% set i = 0 %}
                 {% for ship in ships %}
-                    <p draggable="true" id="{{ i }}" ondragstart="drag(event)">{{ ship }}</p>
+                    <p draggable="true" id="{{ i }}" ondragstart="drag(event)" style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
                     {% set i = i+1 %}
                 {% endfor %}
             </div>
