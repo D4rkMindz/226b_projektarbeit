@@ -1,5 +1,6 @@
+const startup = new Startup();
+
 $(async () => {
-    const startup = new Startup();
     startup.registerHandlers();
     let username = localStorage.getItem('username');
     const sessionKey = $('[data-id=game-id]').val();
@@ -11,10 +12,6 @@ $(async () => {
 
 function allowDrop(ev) {
     ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {

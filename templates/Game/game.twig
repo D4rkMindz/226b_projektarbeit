@@ -71,7 +71,8 @@
                 {{ __('All ships to insert') }}
                 {% set i = 0 %}
                 {% for ship in ships %}
-                    <p draggable="true" id="{{ i }}" ondragstart="drag(event)" style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
+                    <p ship draggable="true" id="{{ i }}"
+                       style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
                     {% set i = i+1 %}
                 {% endfor %}
             </div>

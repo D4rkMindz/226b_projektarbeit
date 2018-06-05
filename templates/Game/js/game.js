@@ -10,6 +10,12 @@ const ACTIONS = {
 
 class Game {
 
+    placeShip(dataId, startX, startY, endX, endY) {
+    }
+
+    removeShip(dataId, startX, startY, endX, endY) {
+    }
+
     constructor(socket, username) {
         this.socket = socket;
         this.username = username;

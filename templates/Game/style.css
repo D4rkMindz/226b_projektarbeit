@@ -15,12 +15,10 @@
     height: 80%;
 }
 
-.ship {
-    background-color: gray;
-}
-
-p.ship {
+.ship-container > p.ship {
     margin-left: 5px;
+    background-color: gray;
+    display: block;
 }
 
 .game-field > tbody > tr > td > p {
@@ -29,4 +27,9 @@ p.ship {
 
 .users {
     display: none;
+}
+
+.rotate {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
