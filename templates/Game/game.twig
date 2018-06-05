@@ -43,16 +43,17 @@
         <div class="game col-md-9">
             <table class="table game-field">
                 <tr>
-                    {% for i in (1..14) %}
+                    <td></td>
+                    {% for i in (1..fieldSize + 1) %}
                         <td>{{ i }}</td>
                     {% endfor %}
 
                 </tr>
-                {% for row in range(1, fieldSize) %}
+                {% for row in range(1, fieldSize + 1) %}
 
                     <tr>
                         <td class="ship-table-numbre">{{ row }}</td>
-                        {% for column in range(1, fieldSize) %}
+                        {% for column in range(1, fieldSize + 1) %}
                             <td data-field class="ship-table" data-row="{{ row }}" data-column="{{ column }}"></td>
                         {% endfor %}
                     </tr>
@@ -67,11 +68,14 @@
             </div>
             <div class="ships">
                 {{ __('All ships to insert') }}
+                {% for ship in ships %}
+                    <p>{{ ship }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
     <div class="link">
-        <a href="link/{{ gameId }}">link/{{ gameId }}</a>
+        <a href="{{ link }}">{{ link }}</a>
     </div>
     <input type="hidden" value="{{ gameId }}" data-id="game-id">
 {% endblock %}
