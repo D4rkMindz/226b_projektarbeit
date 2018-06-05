@@ -1,3 +1,16 @@
-h1{
-	color: purple;
+h1 {
+    color: purple;
+}
+
+.login {
+	text-align: center;
+    margin-top: 20%;
+}
+
+.username {
+    width: 300px;
+}
+
+.username-button {
+    margin-left: 7%
 }

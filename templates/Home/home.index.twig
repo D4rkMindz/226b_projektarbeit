@@ -7,5 +7,12 @@
 
 {# Content #}
 {% block content %}
-    <h1>{{ __('Hello World') }}</h1>
+    <h1>{{ __('Ship Warfare') }}</h1>
+    <div class="login">
+        <div>
+            <label for="username">{{ __('Username') }}</label>
+            <input type="text" name="username" class="username">
+        </div>
+        <input type="button" name=login value="login" class="username username-button">
+    </div>
 {% endblock %}

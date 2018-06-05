@@ -68,4 +68,9 @@ $config['logger'] = [
     'main' => 'app',
 ];
 
+$config['game'] =[
+    'ships' => [5, 3, 3, 2, 1],
+    'fieldSize' => 13,
+];
+
 return $config;

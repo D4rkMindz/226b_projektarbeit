@@ -2,6 +2,7 @@
 
 {% block assets %}
     {{ assets({files: ['Game/js/startup.js','Game/js/game.js','Game/js/run.js']}) }}
+    {{ assets({files: ['Game/style.css']}) }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"
             type="application/javascript"></script>
 {% endblock %}
@@ -32,22 +33,50 @@
     </div>
     <div>
         <h1 data-id="display-username"></h1>
-        {% if gameId is empty%}
+        {% if gameId is empty %}
             <p>Invite your friend to this game via the link below</p>
             <p data-id="invitation-link"></p>
         {% endif %}
         <button type="button" class="btn btn-primary" data-id="emit-test">TEST</button>
     </div>
-    <div class="game">
-        <table class="table game-field">
-            {% for row in range(1, fieldSize)%}
+    <div class="row">
+        <div class="game col-md-9">
+            <table class="table game-field">
                 <tr>
-                    {% for column in range(1, fieldSize) %}
-                        <td data-field data-row="{{ row }}" data-column="{{ column }}">{{ row }},{{ column }}</td>
+                    <td></td>
+                    {% for i in (1..fieldSize + 1) %}
+                        <td>{{ i }}</td>
                     {% endfor %}
+
                 </tr>
-            {% endfor %}
-        </table>
+                {% for row in range(1, fieldSize + 1) %}
+
+                    <tr>
+                        <td class="ship-table-numbre">{{ row }}</td>
+                        {% for column in range(1, fieldSize + 1) %}
+                            <td data-field class="ship-table" id="{{ row }}{{ column }}" data-row="{{ row }}"
+                                data-column="{{ column }}" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="info col-md-2">
+            <div class="users">
+                <span id="username"></span>
+                vs.
+                <span id="enemyUsername"></span>
+            </div>
+            <div class="ship-container" ondrop="drop(event)" ondragover="allowDrop(event)" id="allShips">
+                {{ __('All ships to insert') }}
+                {% set i = 0 %}
+                {% for ship in ships %}
+                    <p ship draggable="true" id="{{ i }}"
+                       style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
+                    {% set i = i+1 %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
     <input type="hidden" value="{{ gameId }}" data-id="game-id">
 {% endblock %}
