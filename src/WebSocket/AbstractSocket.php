@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\WebSocket;
 
 
 use Ratchet\ConnectionInterface;
@@ -13,25 +13,6 @@ use ReflectionClass;
  */
 abstract class AbstractSocket implements MessageComponentInterface
 {
-    /**
-     * All valid actions as constant with ACTION prefix
-     */
-    const ACTION_JOIN = 'join'; // join room
-    const ACTION_HOST = 'host'; // create new room as host
-    const ACTION_PLACE_SHIP = 'place-ship'; // place a ship on the board
-    const ACTION_READY = 'ready'; // ready to play
-    const ACTION_START = 'start'; // start the game
-    const ACTION_SHOT = 'shot'; // fire a shot
-
-    /**
-     * All
-     */
-    const SHIP_COUNT = 7; // count of the ships
-    const SHIP_ONE = 1; // ship with a length of one blocks
-    const SHIP_TWO = 2; // ship with a length of two blocks
-    const SHIP_THREE = 2; // ship with a length of three blocks
-    const SHIP_FOUR = 1; // ship with a length of four blocks
-    const SHIP_FIVE = 1; // ship with a length of five blocks
 
     /**
      * @var Room[]

@@ -120,7 +120,7 @@ class AppController
      *
      * @return ResponseInterface
      */
-    public function redirect(Response $response, string $url, int $status = 301): ResponseInterface
+    protected function redirect(Response $response, string $url, int $status = 301): ResponseInterface
     {
         return $response->withRedirect($url, $status);
     }

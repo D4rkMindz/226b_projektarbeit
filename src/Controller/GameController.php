@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-use App\Service\Game;
+use App\WebSocket\Game;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Container;
 use Slim\Http\Request;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\WebSocket;
 
 /**
  * Class Ship
@@ -43,12 +43,8 @@ class Ship
      */
     public function shoot(int $x, int $y)
     {
-        if ($this->inRange($y, $this->startY, $this->endY)) {
+        if ($this->inRange($y, $this->startY, $this->endY) && $this->inRange($x, $this->startX, $this->endX)) {
             $this->coordinatesHit['x'][] = $x;
-            return true;
-        }
-
-        if ($this->inRange($x, $this->startX, $this->endX)) {
             $this->coordinatesHit['y'][] = $y;
             return true;
         }
@@ -64,9 +60,9 @@ class Ship
     public function isDown()
     {
         $rangeX = $this->getRange($this->startX, $this->endX);
-        $diffX = array_diff($this->coordinatesHit['x'], $rangeX);
+        $diffX = array_diff($rangeX, $this->coordinatesHit['x']);
         $rangeY = $this->getRange($this->startY, $this->endY);
-        $diffY = array_diff($this->coordinatesHit['y'], $rangeY);
+        $diffY = array_diff($rangeY, $this->coordinatesHit['y']);
         return empty($diffX) && empty($diffY);
     }
 
@@ -80,11 +76,11 @@ class Ship
      */
     private function inRange(int $value, int $min, int $max)
     {
-        return $value > $min && $value < $max;
+        return $value >= $min && $value <= $max;
     }
 
     private function getRange(int $start, int $end)
     {
-        return range($start,$end);
+        return range($start, $end);
     }
 }

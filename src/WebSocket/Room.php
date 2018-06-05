@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\WebSocket;
 
 /**
  * Class Room
@@ -19,12 +19,26 @@ class Room
 
     private $clientCount = 0;
 
+    private $id;
+
     /**
      * Room constructor.
+     * @param string $id
      */
-    public function __construct()
+    public function __construct(string $id)
     {
         $this->clients = [];
+        $this->id = $id;
+    }
+
+    /**
+     * Get room id.
+     *
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     /**
@@ -75,14 +89,14 @@ class Room
     {
         $shipStatus = Ship::STATUS_NOT_HIT;
         foreach ($this->clients as $client) {
-            if ($client->getId() == $from) {
+            if ($client->getId() === $from) {
                 continue;
             }
             $shipStatus = $client->shoot($x, $y);
         }
 
         $package = [
-            'type' => AbstractSocket::ACTION_SHOT,
+            'type' => ActionHandler::ACTION_SHOT,
             'x' => $x,
             'y' => $y,
             'ship_status' => $shipStatus,
@@ -100,7 +114,7 @@ class Room
     public function emitJoin(string $username)
     {
         $package = [
-            'type' => AbstractSocket::ACTION_JOIN,
+            'type' => ActionHandler::ACTION_JOIN,
             'username' => $username,
         ];
         $this->sendDataToClients($package);
@@ -109,12 +123,24 @@ class Room
     /**
      * Emit ready.
      *
-     * @param string $username
+     * @param string $userId
      */
-    public function emitReady(string $username)
+    public function emitReady(string $userId)
     {
+        $username = '';
+        foreach ($this->clients as $client) {
+            if ($client->getId() === $userId) {
+                $username = $client->getUsername();
+                break;
+            }
+        }
+        if (empty($username)) {
+            // TODO handle empty username on emit ready
+            return;
+        }
+
         $package = [
-            'type' => AbstractSocket::ACTION_READY,
+            'type' => ActionHandler::ACTION_READY,
             'username' => $username,
         ];
         $this->sendDataToClients($package);
@@ -129,7 +155,7 @@ class Room
         reset($this->clients);
         $key = key($this->clients);
         $package = [
-            'type' => AbstractSocket::ACTION_START,
+            'type' => ActionHandler::ACTION_START,
             'beginner' => $this->clients[$key]->getUsername(),
         ];
         $this->sendDataToClients($package);
@@ -144,7 +170,7 @@ class Room
     public function emitHost(string $userId, string $hostId)
     {
         $package = [
-            'type' => AbstractSocket::ACTION_HOST,
+            'type' => ActionHandler::ACTION_HOST,
             'session_key' => $hostId,
         ];
         $this->sendToEmitter($userId, $package);

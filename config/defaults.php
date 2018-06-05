@@ -1,6 +1,6 @@
 <?php
 
-use App\Service\Mail\MailerInterface;
+use App\WebSocket\Mail\MailerInterface;
 use Aura\Session\Session;
 use Symfony\Component\Translation\Translator;
 

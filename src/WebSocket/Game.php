@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\WebSocket;
 
 
 use Ratchet\ConnectionInterface;
@@ -18,13 +18,20 @@ class Game extends AbstractSocket
     private $clients;
 
     /**
+     * @var Observer
+     */
+    private $observer;
+
+    /**
      * Game constructor.
+     * @param Observer $observer
      * @throws ReflectionException
      */
-    public function __construct()
+    public function __construct(Observer $observer)
     {
         parent::__construct();
         $this->clients = new SplObjectStorage();
+        $this->observer = $observer;
     }
 
     /**
@@ -70,16 +77,19 @@ class Game extends AbstractSocket
     {
         $data = json_decode($msg, true);
         if (!$this->isValidAction($data['type'])) {
+            // TODO handle invalid action
             echo "{$from->resourceId} used invalid action: {$data['type']}\n";
         }
 
+        $this->observer->notify($from, $data['type'], $data);
+//
         $roomId = $this->getRoomByClientId($from->resourceId);
-        if (empty($roomId) && ($data['type'] !== Game::ACTION_HOST && $data['type'] !== Game::ACTION_JOIN)) {
-            $this->emitError($from, 'Please join a session');
-            return;
-        }
-
-        $this->handleAction($data['type'], $data, $roomId, $from);
+//        if (empty($roomId) && ($data['type'] !== Game::ACTION_HOST && $data['type'] !== Game::ACTION_JOIN)) {
+//            $this->emitError($from, 'Please join a session');
+//            return;
+//        }
+//
+//        $this->handleAction($data['type'], $data, $roomId, $from);
     }
 
     /**

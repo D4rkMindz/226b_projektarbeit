@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Service;
+namespace App\WebSocket;
 
 
 use Ratchet\ConnectionInterface;
@@ -40,7 +40,7 @@ class Client
         $this->username = $username;
     }
 
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -60,7 +60,7 @@ class Client
      *
      * @return mixed
      */
-    public function getId()
+    public function getId(): string
     {
         return (string)$this->connection->resourceId;
     }
