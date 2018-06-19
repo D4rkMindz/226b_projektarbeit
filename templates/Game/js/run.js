@@ -16,6 +16,23 @@ function allowDrop(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
+    const id = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(id));
+    const ship = $(`[ship]#${id}`);
+    const length = parseInt(ship.data('length'));
+    ship.attr('style', `width: ${length * 30}px`);
+}
+
+function range(start, end) {
+    if (start > end) {
+        const t = end;
+        end = start;
+        start = t;
+    }
+    const list = [];
+    for (let i = start; i <= end; i++) {
+        list.push(i);
+    }
+
+    return list;
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>\App\Controller\AppController</OriginalElement>
+  <nodes>
+    <node x="620.6451612903229" y="1401.0877842411423">\App\DataRow\AbstractDataRow</node>
+    <node x="861.0179799048126" y="478.2020095187733">\App\WebSocket\Room</node>
+    <node x="281.30883130618724" y="892.7281861448969">\App\WebSocket\Observer</node>
+    <node x="345.0" y="323.0">\App\Controller\GameController</node>
+    <node x="638.1451612903229" y="1278.0877842411423">\App\DataRow\DataRowInterface</node>
+    <node x="628.0" y="334.5">\App\Controller\IndexController</node>
+    <node x="249.0" y="472.0">\App\WebSocket\ObserverableInterface</node>
+    <node x="604.5" y="0.0">\App\Controller\AppController</node>
+    <node x="559.6208355367532" y="477.0872554204125">\App\WebSocket\Ship</node>
+    <node x="883.0" y="346.0">\App\Controller\ErrorController</node>
+    <node x="-336.88974087784254" y="335.91591750396617">\App\WebSocket\AbstractSocket</node>
+    <node x="573.9291380222105" y="826.8360655737705">\App\WebSocket\Client</node>
+    <node x="240.0" y="573.0">\App\WebSocket\ActionHandler</node>
+    <node x="-343.38974087784254" y="504.91591750396617">\App\WebSocket\Game</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\App\Controller\ErrorController" target="\App\Controller\AppController">
+      <point x="0.0" y="-25.5" />
+      <point x="1012.5" y="298.0" />
+      <point x="839.5" y="298.0" />
+      <point x="94.0" y="136.5" />
+    </edge>
+    <edge source="\App\Controller\IndexController" target="\App\Controller\AppController">
+      <point x="0.0" y="-37.0" />
+      <point x="0.0" y="136.5" />
+    </edge>
+    <edge source="\App\Controller\GameController" target="\App\Controller\AppController">
+      <point x="0.0" y="-48.5" />
+      <point x="476.5" y="298.0" />
+      <point x="651.5" y="298.0" />
+      <point x="-94.0" y="136.5" />
+    </edge>
+    <edge source="\App\WebSocket\Game" target="\App\WebSocket\AbstractSocket">
+      <point x="0.0" y="-104.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="\App\WebSocket\ActionHandler" target="\App\WebSocket\ObserverableInterface">
+      <point x="0.0" y="-136.5" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="\App\DataRow\AbstractDataRow" target="\App\DataRow\DataRowInterface">
+      <point x="0.0" y="-59.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.786278586278586" x="379.03584914654084" y="941.6953992596511" />
+  <SelectedNodes>
+    <node>\App\DataRow\AbstractDataRow</node>
+    <node>\App\DataRow\DataRowInterface</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+    <Category>Constants</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

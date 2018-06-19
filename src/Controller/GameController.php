@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-use App\WebSocket\Game;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Container;
 use Slim\Http\Request;
@@ -22,6 +21,7 @@ class GameController extends AppController
         parent::__construct($container);
         $this->config = $container->get('settings');
     }
+
     /**
      * Index action.
      *
@@ -36,6 +36,11 @@ class GameController extends AppController
         if (array_key_exists('game_id', $args)) {
             $gameId = $args['game_id'];
         }
-        return $this->render($response, $request, 'Game/game.twig', ['gameId' => $gameId, 'fieldSize' => $this->config['game']['fieldSize'], 'ships' => $this->config['game']['ships']]);
+        $data = [
+            'gameId' => $gameId,
+            'fieldSize' => $this->config['game']['fieldSize'],
+            'ships' => $this->config['game']['ships']
+        ];
+        return $this->render($response, $request, 'Game/game.twig', $data);
     }
 }

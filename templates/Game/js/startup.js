@@ -37,15 +37,34 @@ class Startup {
     registerHandlers() {
         const $this = this;
         $('[ship]').on('dragstart', function (event) {
-            event.originalEvent.dataTransfer.setData("text", event.target.id);
-            $this.game.removeShip();
+            const id = event.target.id;
+            event.originalEvent.dataTransfer.setData("text", id);
+            $(`.ship-${id}`).removeClass('ship-field').removeClass('ship-field-hit');
+            $this.game.removeShip(id);
         });
         $('[ship]').on('click', function (event) {
             event.currentTarget.classList.toggle('rotate');
+
+            const id = event.currentTarget.id;
+            const ship = $(`[ship]#${id}`);
+            const orientation = parseInt(ship.attr('orientation'));
+            if (orientation === 1) {
+                ship.attr('orientation', 0);
+            } else {
+                ship.attr('orientation', 1);
+            }
+
+            const row = $(event.currentTarget.parentElement).data('row');
+            const column = $(event.currentTarget.parentElement).data('column');
+
+           $this.game.placeShip(id, row, column);
         });
         $('[data-field]').on('drop', function (event) {
-            const id = $('[ship]').attr('id');
-            $this.game.placeShip(id);
+            const id = event.originalEvent.dataTransfer.getData('text');
+            const row = $(this).data('row');
+            const column = $(this).data('column');
+
+            $this.game.placeShip(id, row, column);
         });
         $(window).on('beforeunload', function (e) {
             e.preventDefault();

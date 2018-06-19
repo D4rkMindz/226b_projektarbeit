@@ -79,47 +79,9 @@ class Game extends AbstractSocket
         if (!$this->isValidAction($data['type'])) {
             // TODO handle invalid action
             echo "{$from->resourceId} used invalid action: {$data['type']}\n";
+            return;
         }
 
         $this->observer->notify($from, $data['type'], $data);
-//
-        $roomId = $this->getRoomByClientId($from->resourceId);
-//        if (empty($roomId) && ($data['type'] !== Game::ACTION_HOST && $data['type'] !== Game::ACTION_JOIN)) {
-//            $this->emitError($from, 'Please join a session');
-//            return;
-//        }
-//
-//        $this->handleAction($data['type'], $data, $roomId, $from);
-    }
-
-    /**
-     * Handle action
-     *
-     * @param string $action
-     * @param array $data
-     * @param string $roomId
-     * @param ConnectionInterface $connection
-     */
-    private function handleAction(string $action, array $data, string $roomId, ConnectionInterface $connection)
-    {
-        switch ($action) {
-            case self::ACTION_SHOT:
-                $this->emitShot($roomId, $connection->resourceId, $data['x'], $data['y']);
-                break;
-            case self::ACTION_HOST:
-                $roomId = $this->addClientAsHost($connection, $data['username']);
-                $this->emitHost($roomId, $connection->resourceId, $roomId);
-                break;
-            case self::ACTION_JOIN:
-                $this->addClientToRoom($connection, $data['room_id'], $data['username']);
-                break;
-            case self::ACTION_PLACE_SHIP:
-                $this->addShip($roomId, $connection->resourceId, $data['startX'], $data['startY'], $data['endX'], $data['endY']);
-                break;
-            default:
-                $this->emitError($connection);
-                break;
-        }
-
     }
 }

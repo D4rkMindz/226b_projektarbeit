@@ -52,7 +52,7 @@
                 {% for row in range(1, fieldSize + 1) %}
 
                     <tr>
-                        <td class="ship-table-numbre">{{ row }}</td>
+                        <td class="ship-table-number">{{ row }}</td>
                         {% for column in range(1, fieldSize + 1) %}
                             <td data-field class="ship-table" id="{{ row }}{{ column }}" data-row="{{ row }}"
                                 data-column="{{ column }}" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
@@ -71,7 +71,7 @@
                 {{ __('All ships to insert') }}
                 {% set i = 0 %}
                 {% for ship in ships %}
-                    <p ship draggable="true" id="{{ i }}"
+                    <p ship draggable="true" id="{{ i }}" data-length="{{ ship }}" orientation="0"
                        style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
                     {% set i = i+1 %}
                 {% endfor %}

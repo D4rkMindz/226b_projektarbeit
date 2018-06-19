@@ -10,12 +10,39 @@ const ACTIONS = {
 
 class Game {
 
-    placeShip(dataId, startX, startY, endX, endY) {
-        console.log('Place ship');
+    placeShip(id, row, column) {
+        const ship = $(`[ship]#${id}`);
+        $(`.ship-${id}`).removeClass('ship-field').removeClass('ship-field-hit');
+
+        const orientation = parseInt(ship.attr('orientation'));
+        const length = ship.data('length');
+
+        const startX = row;
+        const startY = column;
+        let endX = row;
+        let endY = column;
+        let shipRange;
+
+        ship.removeAttr('style');
+        // 0 = horizontal, 1 = vertical
+        if (orientation === 1) {
+            endX = row + length - 1;
+            shipRange = range(row, endX);
+            shipRange.forEach(function (el) {
+                $(`[data-column="${column}"][data-row="${el}"]`).addClass('ship-field').addClass(`ship-${id}`);
+            });
+        } else {
+            endY = column + length - 1;
+            shipRange = range(column, endY);
+            shipRange.forEach(function (el) {
+                $(`[data-column="${el}"][data-row="${row}"]`).addClass('ship-field').addClass(`ship-${id}`);
+            });
+        }
+        console.log(`Place Ship: dataId: ${id} ${startX}/${startY} ${endX}/${endY}`);
     }
 
-    removeShip(dataId, startX, startY, endX, endY) {
-        console.log('Remove ship');
+    removeShip(dataId) {
+        console.log(`Remove ship ${dataId}`);
     }
 
     constructor(socket, username) {
