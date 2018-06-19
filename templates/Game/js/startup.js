@@ -38,13 +38,15 @@ class Startup {
         const $this = this;
         $('[ship]').on('dragstart', function (event) {
             event.originalEvent.dataTransfer.setData("text", event.target.id);
-            $this.game.placeShip();
+            $this.game.removeShip();
         });
         $('[ship]').on('click', function (event) {
             event.currentTarget.classList.toggle('rotate');
         });
-        // $('[ship-container]').on('drop', drop(event));
-        // $('[data-field]').on('drop', drop(event));
+        $('[data-field]').on('drop', function (event) {
+            const id = $('[ship]').attr('id');
+            $this.game.placeShip(id);
+        });
         $(window).on('beforeunload', function (e) {
             e.preventDefault();
             return window.confirm('Confirm reload');
@@ -60,12 +62,6 @@ class Startup {
             this.socket.send(JSON.stringify(data))
         });
     }
-
-    // drop(event) {
-    //     event.preventDefault();
-    //     const data = event.dataTransfer.getData("text");
-    //     event.target.appendChild(document.getElementById(data));
-    // }
 
     waitForConnection(interval) {
         return new Promise((resolve) => {

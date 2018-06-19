@@ -67,7 +67,7 @@
                 vs.
                 <span id="enemyUsername"></span>
             </div>
-            <div class="ship-container" ondrop="drop(event)" ondragover="allowDrop(event)" id="allShips">
+            <div ship-container class="ship-container" ondrop="drop(event)" ondragover="allowDrop(event)" id="allShips">
                 {{ __('All ships to insert') }}
                 {% set i = 0 %}
                 {% for ship in ships %}

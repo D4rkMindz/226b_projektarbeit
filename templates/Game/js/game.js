@@ -11,9 +11,11 @@ const ACTIONS = {
 class Game {
 
     placeShip(dataId, startX, startY, endX, endY) {
+        console.log('Place ship');
     }
 
     removeShip(dataId, startX, startY, endX, endY) {
+        console.log('Remove ship');
     }
 
     constructor(socket, username) {
