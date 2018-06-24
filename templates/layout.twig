@@ -29,19 +29,11 @@
 <nav>
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link active" href="{{ path_for('root', { 'language': language }) }}">{{ __('Home') }}</a>
-        </li>
-        {% if is_logged_in %}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path_for('get.login', { 'language': language }) }}">{{ __('Login') }}</a>
+            <a class="nav-link active" href="{{ path_for('root') }}">{{ __('Home') }}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{ path_for('users', { 'language': language }) }}">{{ __('Users') }}</a>
+            <a class="nav-link active" href="{{ path_for('game') }}">{{ __('Game') }}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ path_for('mail', { 'language': language }) }}">{{ __('Mail') }}</a>
-        </li>
-        {% endif %}
     </ul>
 </nav>
 <div class="container">

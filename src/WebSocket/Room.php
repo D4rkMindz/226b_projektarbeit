@@ -61,6 +61,16 @@ class Room
     }
 
     /**
+     * Check if room is full (maximum of players reached)
+     *
+     * @return bool
+     */
+    public function isFull(): bool
+    {
+        return $this->isFull;
+    }
+
+    /**
      * Check if client is in current room
      *
      * @todo find more efficient solution
@@ -120,15 +130,25 @@ class Room
     public function emitShot(string $from, int $x, int $y)
     {
         $username = '';
+        $winner = null;
+        $looser = null;
         $ship = ['status' => Ship::STATUS_NOT_HIT];
+        $allShipsDown = false;
         foreach ($this->clients as $client) {
             if ($client->getId() === $from) {
                 $username = $client->getUsername();
                 continue;
             }
             $ship = $client->shoot($x, $y);
+            $allShipsDown = $client->allShipsDown();
+            if ($allShipsDown) {
+                $looser = $client->getUsername();
+            }
         }
 
+        if ($allShipsDown) {
+            $winner = $username;
+        }
         $shipStatus = $ship['status'];
 
         $package = [
@@ -140,6 +160,9 @@ class Room
             'source' => $username,
             'ship_length' => null,
             'ship_id' => null,
+            'victory' => $allShipsDown,
+            'winner' => $winner,
+            'looser' => $looser,
         ];
 
         if ($ship['status'] === Ship::STATUS_IS_DOWN) {
@@ -241,8 +264,9 @@ class Room
 
     public function emitLeave(string $userId)
     {
+        $username = $this->getClient($userId)->getUsername();
         unset($this->clients[$userId]);
-        $this->broadcast($userId, ['username' => $this->getClient($userId)->getUsername()]);
+        $this->sendDataToClients(['username' => $username, 'type' => ActionHandler::ACTION_LEAVE]);
     }
 
     /**
@@ -281,6 +305,7 @@ class Room
      */
     private function sendDataToClients(array $package)
     {
+        // TODO maybe move type to parameters
         foreach ($this->clients as $client) {
             $package['clientId'] = $client->getId();
             $client->send(json_encode($package));

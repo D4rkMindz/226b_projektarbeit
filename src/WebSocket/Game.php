@@ -77,7 +77,6 @@ class Game extends AbstractSocket
     {
         $data = json_decode($msg, true);
         if (!$this->isValidAction($data['type'])) {
-            // TODO handle invalid action
             echo "{$from->resourceId} used invalid action: {$data['type']}\n";
             return;
         }

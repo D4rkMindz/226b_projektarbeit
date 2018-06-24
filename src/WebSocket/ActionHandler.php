@@ -92,10 +92,15 @@ class ActionHandler implements ObserverableInterface
             case self::ACTION_JOIN:
                 $client = new Client($connection, $data['username']);
                 $room = $this->getRoomBySessionId($data['room_id']);
-                if (empty($room)) {
+                if (empty($room) || $room->isFull()) {
                     $this->host($connection, $data['username']);
+                    return;
                 }
-                $room->attach($client);
+                $attached = $room->attach($client);
+                if (!$attached)  {
+                    $this->host($connection, $data['username']);
+                    return;
+                }
                 $room->emitJoin($connection->resourceId, $client->getUsername());
                 break;
             case self::ACTION_PLACE_SHIP:

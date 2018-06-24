@@ -74,7 +74,7 @@ class Startup {
         });
         $(window).on('beforeunload', function (e) {
             e.preventDefault();
-            const reload = window.confirm('Confirm reload');
+            const reload = window.confirm('Confirm reload') || true;
             if (reload) {
                 $this.game.leave();
             }

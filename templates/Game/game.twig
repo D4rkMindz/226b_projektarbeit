@@ -31,28 +31,33 @@
             </div>
         </div>
     </div>
-    <div>
-        <h1 data-id="display-username"></h1>
-        {% if gameId is empty %}
-            <p>Invite your friend to this game via the link below</p>
-            <p data-id="invitation-link"></p>
-        {% endif %}
-        <button type="button" class="btn btn-primary hidden" data-id="start">Start</button>
-        <p data-id="self-status">Status: <span style="color: red;">Not Ready</span></p>
-        <p data-id="enemy-status">Enemy: <span style="color: red;">Not Ready</span></p>
-        <p data-id="users-turn">Next turn: <span class="hidden">You</span></p>
-        <p>Ships down:</p>
-        <p>
-            {% set i = 0 %}
-            {% for ship in ships %}
-                <span data-ship-id="{{ i }}"
-                      data-ship-length="{{ ship }}"
-                      style="display:inline-block;background-color: gray;width: {{ ship * 40 }}px;height: 40px;margin-right: 5px; padding-left: {{ ship * 15 - 3 }}px;">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 data-id="display-username"></h1>
+            {% if gameId is empty %}
+                <p>Invite your friend to this game via the link below</p>
+                <p data-id="invitation-link"></p>
+            {% endif %}
+            <button type="button" class="btn btn-primary hidden" data-id="start">Start</button>
+            <p data-id="self-status">Status: <span style="color: red;">Not Ready</span></p>
+            <p data-id="enemy-status">Enemy: <span style="color: red;">Not Ready</span></p>
+            <p data-id="users-turn">Next turn: <span class="hidden">You</span></p>
+            <p>Ships down:</p>
+            <p>
+                {% set i = 0 %}
+                {% for ship in ships %}
+                    <span data-ship-id="{{ i }}"
+                          data-ship-length="{{ ship }}"
+                          style="display:inline-block;background-color: gray;width: {{ ship * 40 }}px;height: 40px;margin-right: 5px; padding-left: {{ ship * 15 - 3 }}px;">
                     {{ ship }}
                 </span>
-                {% set i = i + 1 %}
-            {% endfor %}
-        </p>
+                    {% set i = i + 1 %}
+                {% endfor %}
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h1 data-id="game-victory-status"></h1>
+        </div>
     </div>
     <div class="row">
         <div class="game col-md-9">

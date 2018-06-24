@@ -6,6 +6,9 @@ namespace App\WebSocket;
 
 use Ratchet\ConnectionInterface;
 
+/**
+ * Class Client
+ */
 class Client
 {
     /**
@@ -133,11 +136,38 @@ class Client
         return ['status'=> Ship::STATUS_NOT_HIT];
     }
 
+    /**
+     * Check if all ships are down.
+     *
+     * @return bool
+     */
+    public function allShipsDown()
+    {
+
+        if (empty($this->ships)) {
+            return false;
+        }
+        foreach ($this->ships as $ship) {
+            if (!$ship->isDown()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Check if player is ready.
+     *
+     * @return bool
+     */
     public function isReady()
     {
         return $this->isReady;
     }
 
+    /**
+     * Set player status to ready
+     */
     public function setReady()
     {
         $this->isReady = true;

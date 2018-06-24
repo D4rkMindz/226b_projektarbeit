@@ -82,15 +82,15 @@ const Game = function (socket, username) {
         this.send(data, type);
     };
 
-    this.started = ()=>{
-          return this.hasStarted;
+    this.started = () => {
+        return this.hasStarted;
     };
 
     this.registerShot = () => {
         const $this = this;
         $('[data-field]').on('click', function (event) {
             event.preventDefault();
-            if (!$this.myTurn) {
+            if (!$this.myTurn || !!$(this).attr('shot-fired')) {
                 return;
             }
             const x = $(this).data('x');
@@ -185,6 +185,7 @@ const Game = function (socket, username) {
             $('.shootable').removeClass('shootable');
             $('[data-id=users-turn]>span').removeClass('hidden').text('Enemy');
             this.myTurn = false;
+            field.attr('shot-fired','yes');
             if (data['ship_status'] === 'hit') {
                 field.addClass('ship-field-you-hit');
             } else if (data['ship_status'] === 'down') {
@@ -192,6 +193,16 @@ const Game = function (socket, username) {
                 $(`[data-ship-id=${data['ship_id']}]`).css('color', 'white').css('background-color', 'red');
             } else {
                 field.addClass('ship-field-you-missed');
+            }
+        }
+        if (data['victory']) {
+            this.myTurn = false;
+            $('.shootable').removeClass('shootable');
+            const elem = $('[data-id=game-victory-status]');
+            if (data['winner'] === this.username) {
+                elem.text('You Won!');
+            } else {
+                elem.text('You Lost!');
             }
         }
     };
