@@ -157,8 +157,9 @@ const Game = function (socket, username) {
                 this.handleShot(data);
                 break;
             case ACTIONS.LEAVE:
+                $(window).unbind('beforeunload');
                 alert(data['username'] + " left the game");
-                window.location.reload(true);
+                setTimeout(()=> window.location.reload(true), 2500);
                 break;
             case ACTIONS.ERROR:
                 alert(data.message);
@@ -195,7 +196,7 @@ const Game = function (socket, username) {
             $('.shootable').removeClass('shootable');
             $('[data-id=users-turn]>span').removeClass('hidden').text('Enemy');
             this.myTurn = false;
-            field.attr('shot-fired','yes');
+            field.attr('shot-fired', 'yes');
             if (data['ship_status'] === 'hit') {
                 field.addClass('ship-field-you-hit');
             } else if (data['ship_status'] === 'down') {
