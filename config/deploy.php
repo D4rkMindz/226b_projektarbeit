@@ -51,6 +51,10 @@ system("cd ..");
 echo "Deleting old Backups ...";
 system("php clean-up.php 31536000");
 
+echo "\nStarting WebSocket\n";
+system('php bin/game-server.php 0');
+echo "\nStarted WebSocket\n";
+
 echo "\n";
 echo "--------------------------------------------------------\n";
 echo "Server deployment done\n";

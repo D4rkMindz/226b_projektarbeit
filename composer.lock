@@ -730,21 +730,21 @@
         },
         {
             "name": "odan/twig-assets",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/odan/twig-assets.git",
-                "reference": "4ca41606a2b77a4f9d60544d35398736878c71db"
+                "reference": "f1153a361aad5d92c4472a2cc40960022f86d525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/odan/twig-assets/zipball/4ca41606a2b77a4f9d60544d35398736878c71db",
-                "reference": "4ca41606a2b77a4f9d60544d35398736878c71db",
+                "url": "https://api.github.com/repos/odan/twig-assets/zipball/f1153a361aad5d92c4472a2cc40960022f86d525",
+                "reference": "f1153a361aad5d92c4472a2cc40960022f86d525",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "symfony/cache": "^3.2",
+                "symfony/cache": "^3.2|4.0",
                 "twig/extensions": "^1.5"
             },
             "require-dev": {
@@ -778,7 +778,7 @@
                 "minify",
                 "twig"
             ],
-            "time": "2018-04-15T16:17:20+00:00"
+            "time": "2018-06-19T09:19:16+00:00"
         },
         {
             "name": "odan/twig-translation",
@@ -2077,27 +2077,26 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v3.4.11",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "b6f157d4529a3484f60ebc40661b5232526fb432"
+                "reference": "3691cb27e436c55af10ee06de30732623fa2f33e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/b6f157d4529a3484f60ebc40661b5232526fb432",
-                "reference": "b6f157d4529a3484f60ebc40661b5232526fb432",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/3691cb27e436c55af10ee06de30732623fa2f33e",
+                "reference": "3691cb27e436c55af10ee06de30732623fa2f33e",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
+                "php": "^7.1.3",
                 "psr/cache": "~1.0",
                 "psr/log": "~1.0",
-                "psr/simple-cache": "^1.0",
-                "symfony/polyfill-apcu": "~1.1"
+                "psr/simple-cache": "^1.0"
             },
             "conflict": {
-                "symfony/var-dumper": "<3.3"
+                "symfony/var-dumper": "<3.4"
             },
             "provide": {
                 "psr/cache-implementation": "1.0",
@@ -2112,7 +2111,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.0-dev"
                 }
             },
             "autoload": {
@@ -2143,7 +2142,7 @@
                 "caching",
                 "psr6"
             ],
-            "time": "2018-05-16T12:49:49+00:00"
+            "time": "2017-11-20T21:12:12+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -2252,62 +2251,6 @@
                 "options"
             ],
             "time": "2018-05-30T07:26:09+00:00"
-        },
-        {
-            "name": "symfony/polyfill-apcu",
-            "version": "v1.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-apcu.git",
-                "reference": "9b83bd010112ec196410849e840d9b9fefcb15ad"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/9b83bd010112ec196410849e840d9b9fefcb15ad",
-                "reference": "9b83bd010112ec196410849e840d9b9fefcb15ad",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Apcu\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "apcu",
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2018-04-26T10:06:28+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
