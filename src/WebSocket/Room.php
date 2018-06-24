@@ -79,6 +79,38 @@ class Room
     }
 
     /**
+     * Get clients.
+     *
+     * @param string $clientId
+     * @return Client|bool|mixed
+     */
+    public function getClient(string $clientId)
+    {
+        foreach ($this->clients as $client) {
+            if ($client->getId() === $clientId) {
+                return $client;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Check if all clients ready.
+     *
+     * @return bool
+     */
+    public function allClientsReady()
+    {
+        $allReady = true;
+        foreach ($this->clients as $client) {
+            if (!$client->isReady()) {
+                $allReady = false;
+            }
+        }
+        return $allReady;
+    }
+
+    /**
      * Emit message to users
      *
      * @param string $from
@@ -87,13 +119,17 @@ class Room
      */
     public function emitShot(string $from, int $x, int $y)
     {
-        $shipStatus = Ship::STATUS_NOT_HIT;
+        $username = '';
+        $ship = ['status' => Ship::STATUS_NOT_HIT];
         foreach ($this->clients as $client) {
             if ($client->getId() === $from) {
+                $username = $client->getUsername();
                 continue;
             }
-            $shipStatus = $client->shoot($x, $y);
+            $ship = $client->shoot($x, $y);
         }
+
+        $shipStatus = $ship['status'];
 
         $package = [
             'type' => ActionHandler::ACTION_SHOT,
@@ -101,23 +137,45 @@ class Room
             'y' => $y,
             'ship_status' => $shipStatus,
             'status' => 'success',
+            'source' => $username,
+            'ship_length' => null,
+            'ship_id' => null,
         ];
 
+        if ($ship['status'] === Ship::STATUS_IS_DOWN) {
+            $package['ship_length'] = $ship['ship']->getLength();
+            $package['ship_id'] = $ship['ship']->getId();
+        }
         $this->sendDataToClients($package);
     }
 
     /**
      * Emit join message.
      *
+     * @param string $userId
      * @param string $username
      */
-    public function emitJoin(string $username)
+    public function emitJoin(string $userId, string $username)
     {
         $package = [
             'type' => ActionHandler::ACTION_JOIN,
             'username' => $username,
         ];
-        $this->sendDataToClients($package);
+        $this->broadcast($userId, $package);
+
+        $enemyClient = null;
+        foreach ($this->clients as $client) {
+            if ($client->getId() !== $userId) {
+                $enemyClient = $client;
+            }
+        }
+
+        $isReady = false;
+        if (!empty($enemyClient)) {
+            $isReady = $enemyClient->isReady();
+        }
+
+        $this->sendToEmitter($userId, ['enemy_ready' => $isReady, 'type' => ActionHandler::ACTION_JOIN_INFO]);
     }
 
     /**
@@ -143,14 +201,19 @@ class Room
             'type' => ActionHandler::ACTION_READY,
             'username' => $username,
         ];
-        $this->sendDataToClients($package);
+        $this->broadcast($userId, $package);
+        $this->emitStart($userId);
     }
 
     /**
      * Emit start.
      */
-    public function emitStart()
+    public function emitStart($userId)
     {
+        if (!($this->allClientsReady() && count($this->clients) > 1)) {
+            $this->sendToEmitter($userId, ['error' => 'Someone is not ready']);
+            return;
+        }
         $this->started = true;
         reset($this->clients);
         $key = key($this->clients);
@@ -176,6 +239,12 @@ class Room
         $this->sendToEmitter($userId, $package);
     }
 
+    public function emitLeave(string $userId)
+    {
+        unset($this->clients[$userId]);
+        $this->broadcast($userId, ['username' => $this->getClient($userId)->getUsername()]);
+    }
+
     /**
      * Add ship to client
      *
@@ -184,26 +253,25 @@ class Room
      * @param int $startY
      * @param int $endX
      * @param int $endY
+     * @param $id
      */
-    public function addShip(string $clientId, int $startX, int $startY, int $endX, int $endY)
+    public function addShip(string $clientId, int $startX, int $startY, int $endX, int $endY, $id)
     {
-        $ship = new Ship($startX, $startY, $endX, $endY);
+        $ship = new Ship($id, $startX, $startY, $endX, $endY);
         $client = $this->clients[$clientId];
         $client->addShip($ship);
-        if ($client->isReady()) {
-            $this->emitReady($client->getUsername());
-        }
+    }
 
-        $canStart = true;
-        foreach ($this->clients as $client) {
-            if (!$client->isReady()) {
-                $canStart = false;
-            }
-        }
-
-        if ($canStart) {
-            $this->emitStart();
-        }
+    /**
+     * Remove ship.
+     *
+     * @param string $clientId
+     * @param $id
+     */
+    public function removeShip(string $clientId, $id)
+    {
+        $client = $this->clients[$clientId];
+        $client->removeShip($id);
     }
 
     /**

@@ -83,12 +83,29 @@ class Client
     public function addShip(Ship $ship)
     {
         $shipCount = count($this->ships);
-        if ($shipCount >= AbstractSocket::SHIP_COUNT) {
+        if ($shipCount >= ActionHandler::SHIP_COUNT) {
             return;
         }
         $this->ships[] = $ship;
-        if ($shipCount >= AbstractSocket::SHIP_COUNT) {
+        if ($shipCount >= ActionHandler::SHIP_COUNT) {
             $this->isReady = true;
+        }
+    }
+
+    /**
+     * Remove ship
+     *
+     * @param $id
+     */
+    public function removeShip($id)
+    {
+        if (empty($this->ships)) {
+            return;
+        }
+        foreach ($this->ships as $key => $ship) {
+            if ($ship->getId() === $id) {
+                unset($this->ships[$key]);
+            }
         }
     }
 
@@ -99,7 +116,7 @@ class Client
      * @param int $y
      * @return bool
      */
-    public function shoot(int $x, int $y): string
+    public function shoot(int $x, int $y): array
     {
         if (empty($this->ships)) {
             return Ship::STATUS_NOT_HIT;
@@ -107,17 +124,22 @@ class Client
         foreach ($this->ships as $ship) {
             if ($ship->shoot($x, $y)) {
                 if ($ship->isDown()) {
-                    return Ship::STATUS_IS_DOWN;
+                    return ['status' => Ship::STATUS_IS_DOWN, 'ship' => $ship];
                 }
-                return Ship::STATUS_IS_HIT;
+                return ['status' => Ship::STATUS_IS_HIT];
             }
         }
 
-        return Ship::STATUS_NOT_HIT;
+        return ['status'=> Ship::STATUS_NOT_HIT];
     }
 
     public function isReady()
     {
         return $this->isReady;
+    }
+
+    public function setReady()
+    {
+        $this->isReady = true;
     }
 }

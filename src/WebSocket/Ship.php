@@ -17,6 +17,7 @@ class Ship
     private $endX;
     private $endY;
     private $coordinatesHit;
+    private $id;
 
     /**
      * Ship constructor.
@@ -25,13 +26,24 @@ class Ship
      * @param int $endX
      * @param int $endY
      */
-    public function __construct(int $startX, int $startY, int $endX, int $endY)
+    public function __construct($id, int $startX, int $startY, int $endX, int $endY)
     {
+        $this->id = $id;
         $this->startX = $startX;
         $this->startY = $startY;
         $this->endX = $endX;
         $this->endY = $endY;
         $this->coordinatesHit = ['x' => [], 'y' => []];
+    }
+
+    /**
+     * Get id.
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -50,6 +62,20 @@ class Ship
         }
 
         return false;
+    }
+
+    /**
+     * Get ship length
+     *
+     * @return int
+     */
+    public function getLength()
+    {
+        if ($this->startX === $this->endX) {
+            return $this->endY - $this->endX - 1;
+        } else {
+            return $this->endX - $this->startX - 1;
+        }
     }
 
     /**

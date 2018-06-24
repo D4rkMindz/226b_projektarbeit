@@ -21,6 +21,7 @@ function drop(ev) {
     const ship = $(`[ship]#${id}`);
     const length = parseInt(ship.data('length'));
     ship.attr('style', `width: ${length * 30}px`);
+    toggleStart();
 }
 
 function range(start, end) {
@@ -35,4 +36,14 @@ function range(start, end) {
     }
 
     return list;
+}
+
+function toggleStart() {
+    const result = $('[ship-container]:has([ship])');
+    const btn = $('[data-id=start]');
+    if (result.length > 0) {
+        btn.addClass('hidden');
+    } else {
+        btn.removeClass('hidden');
+    }
 }

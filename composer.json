@@ -7,7 +7,7 @@
     "monolog/monolog": "^1.23",
     "slim/twig-view": "^2.3",
     "odan/twig-translation": "^0.2.2",
-    "odan/twig-assets": "^0.2.2",
+    "odan/twig-assets": "^1.0.0",
     "symfony/translation": "^3.4",
     "php-http/curl-client": "^1.7",
     "zendframework/zend-hydrator": "^2.3",

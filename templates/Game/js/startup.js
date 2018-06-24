@@ -41,8 +41,12 @@ class Startup {
             event.originalEvent.dataTransfer.setData("text", id);
             $(`.ship-${id}`).removeClass('ship-field').removeClass('ship-field-hit');
             $this.game.removeShip(id);
+            toggleStart();
         });
         $('[ship]').on('click', function (event) {
+            if ($this.game.started()) {
+                return;
+            }
             event.currentTarget.classList.toggle('rotate');
 
             const id = event.currentTarget.id;
@@ -54,31 +58,43 @@ class Startup {
                 ship.attr('orientation', 1);
             }
 
-            const row = $(event.currentTarget.parentElement).data('row');
-            const column = $(event.currentTarget.parentElement).data('column');
-
-           $this.game.placeShip(id, row, column);
+            const x = $(event.currentTarget.parentElement).data('x') || 0;
+            const y = $(event.currentTarget.parentElement).data('y') || 0;
+            $this.game.removeShip(id);
+            $this.game.placeShip(id, x, y);
+            toggleStart();
         });
         $('[data-field]').on('drop', function (event) {
             const id = event.originalEvent.dataTransfer.getData('text');
-            const row = $(this).data('row');
-            const column = $(this).data('column');
+            const x = $(this).data('x');
+            const y = $(this).data('y');
 
-            $this.game.placeShip(id, row, column);
+            $this.game.placeShip(id, x, y);
+            toggleStart();
         });
         $(window).on('beforeunload', function (e) {
             e.preventDefault();
-            return window.confirm('Confirm reload');
+            const reload = window.confirm('Confirm reload');
+            if (reload) {
+                $this.game.leave();
+            }
+            return reload;
         });
 
-        $('[data-id=emit-test]').on('click', (event) => {
+        $('[data-id=start]').on('click', (event) => {
             event.preventDefault();
+            const willStart = confirm('Are you really ready?');
+            if (!willStart) {
+                return;
+            }
             const data = {
-                type: ACTIONS.SHOT,
-                x: 1,
-                y: 1,
+                type: ACTIONS.READY,
             };
-            this.socket.send(JSON.stringify(data))
+            this.socket.send(JSON.stringify(data));
+            $(this).addClass('hidden');
+            $('[ship]').attr('draggable', false);
+            console.log('Starting game...');
+            $('[data-id=self-status] > span').removeAttr('style').attr('style', 'color: green').text('Ready');
         });
     }
 

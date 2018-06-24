@@ -1,3 +1,7 @@
+.hidden {
+    visibility: hidden;
+}
+
 .ship-table {
     border: 1px solid black;
     width: 40px;
@@ -34,15 +38,37 @@
     transform: rotate(90deg);
 }
 
-
 .ship-field {
     background-color: gray;
 }
 
-.ship-field-hit {
+.ship-field-enemy-hit {
     background-color: red;
 }
 
-.ship-field-missed {
+.ship-field-enemy-missed{
     background-color: blue;
+}
+
+.ship-field-you-hit::before {
+    color: darkred;
+    content: '💥';
+    font-size: 25px;
+    position: absolute;
+    margin: -7px -6px;
+    background-color: transparent;
+}
+
+.ship-field-you-missed::before {
+    color: aqua;
+    content: '○';
+    font-size: 25px;
+    position: absolute;
+    margin: -7px 5px;
+    background-color: transparent;
+}
+
+.shootable:hover {
+    background-color: orangered;
+    content: 'X';
 }

@@ -32,7 +32,7 @@ abstract class AbstractSocket implements MessageComponentInterface
     {
         $this->rooms = [];
 
-        $refl = new ReflectionClass(get_class());
+        $refl = new ReflectionClass(ActionHandler::class);
         $this->validActions = [];
         foreach ($refl->getConstants() AS $key => $value) {
             if (substr($key, 0, 6) === 'ACTION') {

@@ -42,7 +42,6 @@ class Game extends AbstractSocket
     function onOpen(ConnectionInterface $conn)
     {
         echo $conn->resourceId . " joined\n";
-        // TODO: Implement onOpen() method.
     }
 
     /**
@@ -52,7 +51,7 @@ class Game extends AbstractSocket
      */
     function onClose(ConnectionInterface $conn)
     {
-        // TODO: Implement onClose() method.
+        echo "{$conn->resourceId} left\n";
     }
 
     /**
@@ -64,6 +63,7 @@ class Game extends AbstractSocket
      */
     function onError(ConnectionInterface $conn, \Exception $e)
     {
+        echo "ERROR ON {$conn->resourceId}. Exception: {$e->getMessage()}";
         // TODO: Implement onError() method.
     }
 

@@ -37,11 +37,26 @@
             <p>Invite your friend to this game via the link below</p>
             <p data-id="invitation-link"></p>
         {% endif %}
-        <button type="button" class="btn btn-primary" data-id="emit-test">TEST</button>
+        <button type="button" class="btn btn-primary hidden" data-id="start">Start</button>
+        <p data-id="self-status">Status: <span style="color: red;">Not Ready</span></p>
+        <p data-id="enemy-status">Enemy: <span style="color: red;">Not Ready</span></p>
+        <p data-id="users-turn">Next turn: <span class="hidden">You</span></p>
+        <p>Ships down:</p>
+        <p>
+            {% set i = 0 %}
+            {% for ship in ships %}
+                <span data-ship-id="{{ i }}"
+                      data-ship-length="{{ ship }}"
+                      style="display:inline-block;background-color: gray;width: {{ ship * 40 }}px;height: 40px;margin-right: 5px; padding-left: {{ ship * 15 - 3 }}px;">
+                    {{ ship }}
+                </span>
+                {% set i = i + 1 %}
+            {% endfor %}
+        </p>
     </div>
     <div class="row">
         <div class="game col-md-9">
-            <table class="table game-field">
+            <table class="table game-field" gamefield>
                 <tr>
                     <td></td>
                     {% for i in (1..fieldSize + 1) %}
@@ -54,14 +69,14 @@
                     <tr>
                         <td class="ship-table-number">{{ row }}</td>
                         {% for column in range(1, fieldSize + 1) %}
-                            <td data-field class="ship-table" id="{{ row }}{{ column }}" data-row="{{ row }}"
-                                data-column="{{ column }}" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                            <td data-field class="ship-table" id="{{ row }}{{ column }}" data-x="{{ row }}"
+                                data-y="{{ column }}" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                         {% endfor %}
                     </tr>
                 {% endfor %}
             </table>
         </div>
-        <div class="info col-md-2">
+        <div class="info col-md-3">
             <div class="users">
                 <span id="username"></span>
                 vs.
@@ -72,7 +87,7 @@
                 {% set i = 0 %}
                 {% for ship in ships %}
                     <p ship draggable="true" id="{{ i }}" data-length="{{ ship }}" orientation="0"
-                       style="width: {{ ship * 30 }}px" class="ship">{{ ship }}</p>
+                       style="width: {{ ship * 40 }}px; height: 40px;" class="ship">{{ ship }}</p>
                     {% set i = i+1 %}
                 {% endfor %}
             </div>
