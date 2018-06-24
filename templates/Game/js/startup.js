@@ -44,7 +44,7 @@ class Startup {
             toggleStart();
         });
         $('[ship]').on('click', function (event) {
-            if ($this.game.started()) {
+            if ($this.game.isStartConfirmed() || $this.game.isStarted()) {
                 return;
             }
             event.currentTarget.classList.toggle('rotate');
@@ -87,6 +87,7 @@ class Startup {
             if (!willStart) {
                 return;
             }
+            $this.game.confirmStart();
             const data = {
                 type: ACTIONS.READY,
             };

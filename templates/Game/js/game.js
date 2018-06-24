@@ -18,6 +18,7 @@ const Game = function (socket, username) {
         this.username = username;
         this.myTurn = false;
         this.hasStarted = false;
+        this.hasConfirmedStart = false;
         this.registerSockets();
         this.registerShot();
         console.log(`User joined the game as ${username}`);
@@ -82,8 +83,16 @@ const Game = function (socket, username) {
         this.send(data, type);
     };
 
-    this.started = () => {
+    this.isStarted = () => {
         return this.hasStarted;
+    };
+
+    this.confirmStart = () => {
+        this.hasConfirmedStart = true;
+    };
+
+    this.isStartConfirmed = () => {
+        return this.hasConfirmedStart;
     };
 
     this.registerShot = () => {
