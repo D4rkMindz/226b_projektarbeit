@@ -21,7 +21,7 @@ class ActionHandler implements ObserverableInterface
     const ACTION_SHOT = 'shot'; // fire a shot
     const ACTION_LEAVE = 'leave'; // fire a shot
 
-    const SHIP_COUNT = 5;
+    const SHIP_COUNT = 6;
 
     /**
      * @var Room[];

@@ -69,9 +69,9 @@ $config['logger'] = [
 ];
 
 $config['game'] =[
-    'ships' => [5, 3, 3, 2, 1],
+    'ships' => [5, 4, 3, 3, 2, 1],
     // Adjust SHIP_COUNT in ActionHandler if smt is changed.
-    'fieldSize' => 15,
+    'fieldSize' => 13,
 ];
 
 return $config;
