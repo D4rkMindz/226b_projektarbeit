@@ -52,7 +52,7 @@ echo "Deleting old Backups ...";
 system("php clean-up.php 31536000");
 
 echo "\nStarting WebSocket\n";
-system("screen -S websocket -d -m sh /home/d4rkmindz/schoolproject/htdocs/htdocs/bin/setup-websocket.sh");
+system("./htdocs/bin/setup-wesocket.sh");
 echo "\nStarted WebSocket\n";
 
 echo "\n";
