@@ -74,4 +74,9 @@ $config['game'] =[
     'fieldSize' => 13,
 ];
 
+
+$env['twig']['assetCache'] ['minify'] = true;
+$env['twig']['assetCache'] ['cache_enabled'] = true;
+$env['twig']['autoReload'] = true;
+
 return $config;
