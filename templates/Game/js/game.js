@@ -149,6 +149,7 @@ const Game = function (socket, username) {
                 break;
             case ACTIONS.LEAVE:
                 alert(data['username'] + " left the game");
+                window.location.reload(true);
                 break;
             case ACTIONS.ERROR:
                 alert(data.message);
