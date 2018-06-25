@@ -89,7 +89,7 @@ class AppController
     ): ResponseInterface {
         $extend = [
             'language' => $request->getAttribute('language'),
-            'page' => 'Slim Application',
+            'page' => 'Schiffliversänke',
             'is_logged_in' => $this->session->get('logged_in') ?: false,
         ];
         $viewData = array_replace_recursive($extend, $viewData);
