@@ -35,7 +35,7 @@ class ShipTest extends TestCase
      */
     public function setUp()
     {
-        $this->ship = new Ship($this->startX, $this->startY, $this->endX, $this->endY);
+        $this->ship = new Ship(1, $this->startX, $this->startY, $this->endX, $this->endY);
     }
 
     /**
